@@ -23,6 +23,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="{{ route('create.article') }}">Crea</a></li>
                             <li><a class= "dropdown-item" href="#"
                                     onclick="event.preventDefault();document.querySelector('#form-logout').submit()">Logout</a>
                             </li>
@@ -39,7 +40,6 @@
                             <li><a class="dropdown-item" href="{{ route('login') }}">Accedi</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
-
                         </ul>
                     </li>
                 @endauth
@@ -47,3 +47,7 @@
         </div>
     </div>
 </nav>
+
+<form action="{{ route('logout') }}" method="POST" id="form-logout" class="d-none">
+    @csrf
+</form>
