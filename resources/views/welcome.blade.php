@@ -1,10 +1,9 @@
 <x-layout>
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12 col-lg-8 mx-auto mt-5 mb-lg-0">
-                <h1>Benvenuto su Presto2</h1>
+    <div class="container-fluid text-center bg-body-tertiary">
+        <div class="row vh-100 justify-content-center align-items-center">
+            <div class="col-md-12">
+                <h1 class="display-4">Presto.it</h1>
             </div>
         </div>
-
     </div>
 </x-layout>
