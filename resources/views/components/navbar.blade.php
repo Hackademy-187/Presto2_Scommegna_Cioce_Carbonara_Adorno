@@ -22,27 +22,29 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
                             <li><a class= "dropdown-item" href="#"
                                     onclick="event.preventDefault();document.querySelector('#form-logout').submit()">Logout</a>
                             </li>
-                            <hr class="dropdown-divider">
+                            <form action="{{ route('logout') }}" method="post" class="d-none" id="form-logout">@csrf</form>
                         </ul>
-                    </li>
-                @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Ciao, utente!
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('login') }}">Accedi</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
+                        <hr class="dropdown-divider">
+                </ul>
+                </li>
+            @else
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Ciao, Utente!
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Accedi</a></li>
+                        <hr class="dropdown-divider">
+                        <li><a class="dropdown-item" href="{{ route('register') }}">Registrati</a></li>
 
-                        </ul>
-                    </li>
-                @endauth
+                    </ul>
+                </li>
+            @endauth
             </ul>
         </div>
     </div>
