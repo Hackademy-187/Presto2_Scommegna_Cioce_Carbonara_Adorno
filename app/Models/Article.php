@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Article extends Model
 {
@@ -21,4 +22,23 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function setAccepted($value)
+    {
+    $this->is_accepted = $value;
+    $this->save();
+    return true;
+    }
+
+public static function toBeRevisedCount()
+    {
+    return Article::where('is_accepted', null)->count();
+    }
+
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    }   
+
+
 }
