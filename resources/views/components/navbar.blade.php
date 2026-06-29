@@ -4,7 +4,11 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <a href="{{ route('homepage') }}" class="logo">
-                        <img class="logonav" src="{{ asset('/storage/images/logo.png') }}" alt="Logo Presto">
+                        <img class="logonav" src="{{ asset('/storage/images/logo.png') }}" alt="Logo Subirra">
+
+                        <span class="logo-text">
+                            Subirra.it
+                        </span>
                     </a>
                     </a>
                     <ul class="nav">

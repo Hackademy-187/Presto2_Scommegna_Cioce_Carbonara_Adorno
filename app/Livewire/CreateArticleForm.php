@@ -38,6 +38,9 @@ class CreateArticleForm extends Component
         $this->cleanForm();
 
         session()->flash('success', 'Articolo creato correttamente');
+
+        // Lancia l'evento per il browser
+        $this->dispatch('article-created');
     }
 
     protected function cleanForm()
