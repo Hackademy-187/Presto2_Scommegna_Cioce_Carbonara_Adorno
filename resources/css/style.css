@@ -359,7 +359,7 @@ p {
 }
 
 .section-label {
-    color: #d4a017;
+    color: #fbb400;
 
     font-weight: 600;
 
@@ -640,6 +640,112 @@ footer .under-footer ul li a:hover {
     footer h4 {
         margin-top: 30px;
     }
+}
+/* ========================= */
+/* AUTH PAGES (LOGIN / REGISTER) */
+/* ========================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a3028 0%, #0f1f1a 100%);
+    padding: 120px 20px 60px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(26, 26, 26, 0.92);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    border-radius: 14px;
+    padding: 35px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.auth-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.auth-subtitle {
+    font-size: 13px;
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #d4a843;
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
+}
+
+.auth-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #d4a843;
+    border: none;
+    border-radius: 8px;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+.auth-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.auth-link a {
+    color: #d4a843;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    color: #fff;
+}
+
+.auth-error {
+    font-size: 12px;
+    color: #ff5c5c;
+    margin-top: 5px;
 }
 
 /* VIDEO INTRO */
