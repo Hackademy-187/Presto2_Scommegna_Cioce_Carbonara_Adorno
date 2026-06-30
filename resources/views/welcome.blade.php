@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh;">
+    <div style="background: linear-gradient(135deg, #f7a204 0%, #130c00d7 100%); min-height: 100vh;">
 
 <div id="beer-hero" class="hero-section">
 
@@ -85,3 +85,4 @@
     </div>
 
 </x-layout>
+
