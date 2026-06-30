@@ -1,14 +1,9 @@
 <x-layout>
     <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh; padding-bottom: 60px;">
         <div class="container">
-<<<<<<< HEAD
             <div class="row justify-content-center align-items-center text-center"
                 style="padding-top: 60px; padding-bottom: 40px;">
-                <div class="col-12 my-5">
-=======
-            <div class="row justify-content-center align-items-center text-center" style="padding-top: 60px; padding-bottom: 40px;">
                 <div class="col-12">
->>>>>>> 564acd46077df92efbc6c6b6508a86d40556d747
                     <span class="section-label">Scopri i nostri annunci</span>
                     <h1 class="display-4 fw-bold mt-2" style="color: #fff; font-family: 'Poppins', sans-serif;">
                         Tutti gli Articoli
@@ -30,12 +25,7 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        <div class="d-flex justify-content-center"
-            style="padding-top: 30px; padding-bottom: 30px;">
-=======
         <div class="d-flex justify-content-center" style=" padding-top: 30px; padding-bottom: 30px;">
->>>>>>> 564acd46077df92efbc6c6b6508a86d40556d747
             <div>
                 {{ $articles->links() }}
             </div>

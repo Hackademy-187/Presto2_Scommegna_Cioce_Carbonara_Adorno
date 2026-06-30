@@ -54,7 +54,6 @@ p {
     height: 60px;
 }
 
-/* Distribuzione flessibile degli elementi (Logo a sinistra, Menu/Search a destra) */
 .header-area .main-nav {
     height: 80px;
     display: flex;
@@ -68,37 +67,29 @@ p {
     height: 60px;
 }
 
-/* ==========================================================================
-   STRUTTURA LOGO (INGRANDITO)
-   ========================================================================== */
 .header-area .main-nav .logo {
     display: flex;
     align-items: center;
+    gap: 15px;
     height: 100%;
     text-decoration: none;
-    position: relative; /* Base per il posizionamento assoluto dell'immagine */
+    position: relative;
 }
 
-/* L'immagine ora fluttua liberamente ed è molto più grande */
 .logonav {
-    height: 110px; /* Imposta l'altezza che preferisci per il tuo logo */
+    height: 110px;
     width: auto;
     object-fit: contain;
     display: block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
+    margin-top: -5px;
     transition: all 0.4s ease;
-    z-index: 10;
 }
 
-/* Il logo si rimpicciolisce delicatamente allo scroll della pagina */
 .header-area.navbar-scrolled .logonav {
-    height: 80px; 
+    height: 75px; 
+    margin-top: 0;
 }
 
-/* Spostiamo il testo a destra per non sovrapporlo all'immagine sporgente */
 .logo-text {
     color: #ffffff;
     font-size: 26px;
@@ -106,21 +97,17 @@ p {
     letter-spacing: -1px;
     white-space: nowrap;
     transition: all 0.4s ease;
-    margin-left: 115px; /* Crea lo spazio necessario per l'immagine del logo */
+    margin-left: 0;
 }
 
 .header-area.navbar-scrolled .logo-text {
     font-size: 22px;
-    margin-left: 85px; /* Riduce lo spazio quando l'immagine rimpicciolisce */
 }
 
-/* ==========================================================================
-   CONTENITORE DESTRO (MENU + SEARCH BAR)
-   ========================================================================== */
 .nav-container-right {
     display: flex;
     align-items: center;
-    gap: 25px; /* Spazio di sicurezza tra l'ultimo link del menu e la barra di ricerca */
+    gap: 25px;
 }
 
 .header-area .main-nav .nav {
@@ -153,9 +140,6 @@ p {
     color: #d4a843 !important;
 }
 
-/* ==========================================================================
-   MENU DROP-DOWN (CATEGORIE / UTENTE)
-   ========================================================================== */
 .header-area .main-nav .nav li.submenu {
     position: relative;
     padding-right: 28px;
@@ -223,14 +207,11 @@ p {
 .header-area .main-nav .nav li.submenu:hover ul {
     visibility: visible;
     opacity: 1;
-    z-index: 100; /* Aumentato per evitare che vada sotto i contenuti della pagina */
+    z-index: 100;
     transform: translateY(0);
     transition-delay: 0s, 0s, 0.3s;
 }
 
-/* ==========================================================================
-   BARRA DI RICERCA STILI
-   ========================================================================== */
 .search-form-nav {
     min-width: 200px;
     display: flex;
@@ -248,7 +229,6 @@ p {
     border-color: #d4a843;
 }
 
-/*RESPONSIVE / MOBILE TRIGGER */
 .header-area .main-nav .menu-trigger {
     cursor: pointer;
     display: none;
