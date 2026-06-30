@@ -22,6 +22,17 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+        // Definiamo i messaggi personalizzati
+        $messages = [
+            'name.required' => 'Il campo nome è obbligatorio.',
+            'email.required' => 'Devi inserire un indirizzo email.',
+            'email.unique' => 'Questa email è già registrata.',
+            'email.email' => 'Inserisci un indirizzo email valido.',
+            'password.required' => 'La password è obbligatoria.',
+            'password.confirmed' => 'La conferma della password non coincide.',
+        ];
+
+        // Passiamo $messages come terzo argomento
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -32,7 +43,7 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-        ])->validate();
+        ], $messages)->validate();
 
         return User::create([
             'name' => $input['name'],
