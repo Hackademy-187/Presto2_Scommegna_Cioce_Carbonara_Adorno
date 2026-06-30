@@ -90,8 +90,8 @@ p {
     height: 75px;
     margin-top: 0;
     margin-right: -15px !important;
-    opacity: 0;                   
-    visibility: hidden;           
+    opacity: 0;
+    visibility: hidden;
     padding: 0;
 }
 
@@ -246,46 +246,71 @@ p {
     right: 40px;
 }
 /* ========================= */
-/* HERO SECTION */
+/* HERO SECTION - EFFETTO iBEER CON SCHIUMA */
 /* ========================= */
+
+:root {
+    --beer-level: 0%; /* Invertiamo la logica nel JS per comodità di calcolo: 0% = pieno, 100% = vuoto */
+    --beer-angle: 0deg;
+}
 
 .hero-section {
     position: relative;
-
     min-height: 80vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
     overflow: hidden;
+    background-color: #1a3028 !important; 
+}
+
+/* Livello Birra */
+.beer-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    z-index: 0;
+    
+    clip-path: polygon(
+        -20% calc(var(--beer-level) - var(--beer-angle)), 
+        120% calc(var(--beer-level) + var(--beer-angle)), 
+        120% 110%, 
+        -20% 110%
+    );
+    transition: clip-path 0.12s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+/* NUOVO: Livello Schiuma Dinamica */
+.beer-foam-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Sta sopra la birra */
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 245, 0.95) 0%, rgba(245, 235, 215, 0.8) 40px, transparent 60px);
+    
+    /* Il clip path della schiuma è leggermente più alto (-2vh) e amplifica l'angolo per simulare lo slush del liquido */
+    clip-path: polygon(
+        -20% calc(var(--beer-level) - (var(--beer-angle) * 1.3) - 2vh), 
+        120% calc(var(--beer-level) + (var(--beer-angle) * 1.3) - 2vh), 
+        120% 110%, 
+        -20% 110%
+    );
+    transition: clip-path 0.1s cubic-bezier(0.1, 0.8, 0.3, 1);
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.75) 100%
-        ),
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
-
-    z-index: 1;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 2; /* Sopra la schiuma, sotto i testi */
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
-
+    z-index: 3;
     padding: 20px;
 }
 
@@ -662,5 +687,28 @@ footer .under-footer ul li a:hover {
 
     .category-subtitle {
         font-size: 15px;
+    }
+}
+/* ========================= */
+/* ANIMAZIONE CSS */
+/* ========================= */
+@keyframes drink-beer {
+    0% {
+        height: 100%; /* Bicchiere pieno all'inizio */
+    }
+    15% {
+        height: 100%; /* Resta pieno un secondo per far caricare la pagina */
+    }
+    40% {
+        height: 75%;  /* Primo grande sorso */
+    }
+    55% {
+        height: 75%;  /* Pausa per respirare/deglutire */
+    }
+    90% {
+        height: 25%;  /* Secondo sorso profondo, la birra è quasi finita */
+    }
+    100% {
+        height: 25%;  /* Si stabilizza sul fondo */
     }
 }

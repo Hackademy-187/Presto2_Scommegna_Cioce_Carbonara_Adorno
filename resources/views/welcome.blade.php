@@ -1,63 +1,49 @@
 <x-layout>
 
     @if (session()->has('errorMessage'))
-    <div class="alert alert-danger text-center shadow rounded w-50">
-        {{ session('errorMessage') }}
-    </div>
+        <div class="alert alert-danger text-center shadow rounded w-50">
+            {{ session('errorMessage') }}
+        </div>
     @endif
 
 
 
     @if (session()->has('message'))
-    <div class="alert alert-success text-center shadow rounded w-50">
-        {{ session('message') }}
-    </div>
+        <div class="alert alert-success text-center shadow rounded w-50">
+            {{ session('message') }}
+        </div>
     @endif
 
-
-
-    <!-- Tutta la pagina con sfondo scuro -->
     <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh;">
 
-        <!-- HERO SECTION -->
-        <!-- HERO SECTION -->
-<div class="hero-section"
-     style="background-image: url('{{ asset('storage/images/hero-beer.jpg') }}');">
+<!-- HERO SECTION EFFETTO iBEER CON SCHIUMA -->
+<div id="beer-hero" class="hero-section">
+
+    <!-- Il livello della birra bionda -->
+    <div class="beer-bg" id="beer-liquid" style="background-image: url('{{ asset('storage/images/hero-beer.jpg') }}');"></div>
+
+    <!-- NUOVO: Il livello della schiuma che si muove sopra la birra -->
+    <div class="beer-foam-layer" id="beer-foam"></div>
 
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-
-        <span class="section-label">
-            Benvenuto su
-        </span>
-
-        <h1 class="hero-title">
-            Subirra.it
-        </h1>
-
-        <p class="hero-subtitle">
-            Il marketplace italiano per i tuoi annunci
-        </p>
+        <span class="section-label">Benvenuto su</span>
+        <h1 class="hero-title">Subirra.it</h1>
+        <p class="hero-subtitle">Il marketplace italiano per i tuoi annunci</p>
 
         <div class="my-4">
             @auth
                 <div class="main-border-button d-inline-block">
-                    <a href="{{ route('create.article') }}">
-                        Pubblica un annuncio
-                    </a>
+                    <a href="{{ route('create.article') }}">Pubblica un annuncio</a>
                 </div>
             @else
                 <div class="main-border-button d-inline-block">
-                    <a href="{{ route('register') }}">
-                        Inizia ora
-                    </a>
+                    <a href="{{ route('register') }}">Inizia ora</a>
                 </div>
             @endauth
         </div>
-
     </div>
-
 </div>
 
         <!-- ULTIMI ANNUNCI -->
