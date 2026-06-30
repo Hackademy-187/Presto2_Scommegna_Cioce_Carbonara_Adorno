@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Presto2</title>
+    <title>Subirra.it</title>
 </head>
 <body>
     @if(session('showAnimation'))
@@ -18,7 +18,7 @@
     </div>
 @endif
     <x-navbar />
-    <div class="min-vh-100">
+    <div class="min-vh-100 my-5">
         {{$slot}}
         <x-footer />
     </div>

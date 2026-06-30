@@ -1,6 +1,4 @@
-// =========================
 // NAVBAR SCROLL
-// =========================
 
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.header-area');
@@ -14,10 +12,7 @@ window.addEventListener('scroll', () => {
 });
 
 
-// =========================
 // VIDEO LOGIN
-// =========================
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const video = document.getElementById('intro-video');

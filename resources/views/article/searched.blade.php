@@ -1,28 +1,33 @@
 <x-layout>
-    <div class="container-fluid ">
-        <div class="row py-5 justify-content-center align-items-center text-center">
-            <div class="col-12">
-                <h1 class="display-1 ">
-                    Risultati per la ricerca "<span class="fst-italic">{{ $query }}</span>"
-                </h1>
+    <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh; padding-bottom: 60px;">
+        <div class="container">
+            <div class="row justify-content-center align-items-center text-center"
+                style="padding-top: 60px; padding-bottom: 40px;">
+                <div class="col-12">
+                    <span class="section-label">Esplora i risultati</span>
+                    <h1 class="display-4 fw-bold mt-2" style="color: #fff; font-family: 'Poppins', sans-serif;">
+                        Risultati per: <span class="fst-italic" style="color: #d4a843;">"{{ $query }}"</span>
+                    </h1>
+                    <div class="mx-auto mt-3" style="width: 60px; height: 3px; background-color: #d4a843;"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center py-5">
+                @forelse ($articles as $article)
+                    <div class="col-12 col-md-3">
+                        <x-card :article="$article" />
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <h2 class="text-center" style="color: #aaa; font-family: 'Poppins', sans-serif;">
+                            Nessun articolo corrisponde alla tua ricerca
+                        </h2>
+                    </div>
+                @endforelse
             </div>
         </div>
 
-        <div class="row height-custom justify-content-center align-items-center py-5">
-            @forelse ($articles as $article)
-                <div class="col-12 col-md-3 ">
-                    <x-card :article="$article" />
-                </div>
-            @empty
-                <div class="col-12">
-                    <h3 class="text-center">
-                        Nessun articolo corrisponde alla tua ricerca
-                    </h3>
-                </div>
-            @endforelse
-        </div>
-
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" style="padding-top: 30px; padding-bottom: 30px;">
             <div>
                 {{ $articles->links() }}
             </div>

@@ -10,7 +10,7 @@
         @endif
 
         <!-- Header dashboard -->
-        <div class="container" style="padding-top: 60px; padding-bottom: 40px; border-bottom: 1px solid #1a3028;">
+        <div class="container" style="padding-top: 60px; padding-bottom: 40px;">
             <div class="row">
                 <div class="col-12 text-center">
                     <span class="section-label">Area riservata</span>

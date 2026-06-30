@@ -21,7 +21,8 @@
                                 <ul>
                                     @foreach ($categories as $category)
                                         <li>
-                                            <a class="text-capitalize" href="{{ route('byCategory', ['category' => $category]) }}">
+                                            <a class="text-capitalize"
+                                                href="{{ route('byCategory', ['category' => $category]) }}">
                                                 {{ $category->name }}
                                             </a>
                                         </li>
@@ -34,7 +35,8 @@
                                     <li class="nav-item">
                                         <a class="position-relative" href="{{ route('revisor.index') }}">
                                             Zona revisore
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                                 {{ \App\Models\Article::toBeRevisedCount() }}
                                             </span>
                                         </a>
@@ -52,7 +54,8 @@
                                             <li><a href="{{ route('revisor.index') }}">Zona revisore</a></li>
                                         @endif
                                         <li>
-                                            <a href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit()">
+                                            <a href="#"
+                                                onclick="event.preventDefault(); document.querySelector('#form-logout').submit()">
                                                 Logout
                                             </a>
                                         </li>
@@ -70,19 +73,19 @@
                         </ul>
 
                         <!-- BARRA DI RICERCA -->
-                        <form class="search-form-nav" role="search" action="{{ route('article.search') }}" method="GET">
+                        <form class="search-form-nav" role="search" action="{{ route('article.search') }}"
+                            method="GET">
                             <div class="input-group input-group-sm">
-                                <input type="search" name="query" class="form-control" placeholder="Cerca..." aria-label="search">
+                                <input type="search" name="query" class="form-control" placeholder="Cerca..."
+                                    aria-label="search">
                                 <button type="submit" class="btn btn-outline-success">
-                                    Search
+                                    <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </form>
-                    </div>
-
-                    <a class="menu-trigger">
-                        <span>Menu</span>
-                    </a>
+                        <a class="menu-trigger">
+                            <span>Menu</span>
+                        </a>
 
                 </nav>
             </div>

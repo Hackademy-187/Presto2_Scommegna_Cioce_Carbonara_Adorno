@@ -9,19 +9,23 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center g-5 align-items-start">
+            <!-- Modificato: aggiunto align-items-stretch per forzare la stessa altezza delle colonne su desktop -->
+            <div class="row justify-content-center g-5 align-items-stretch">
                 
                 <div class="col-12 col-md-6">
-                    <div id="carouselExample" class="carousel slide overflow-hidden" style="box-shadow: 0px 0px 30px rgba(0,0,0,0.3); border-radius: 8px;">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://picsum.photos/600/500?random=1" class="d-block w-100" alt="Immagine {{$article->title}}" style="max-height: 450px; object-fit: cover;">
+                    <!-- Modificato: aggiunto h-100 per estendere il carosello a tutta l'altezza della colonna -->
+                    <div id="carouselExample" class="carousel slide overflow-hidden h-100 d-flex flex-column" style="box-shadow: 0px 0px 30px rgba(0,0,0,0.3); border-radius: 8px;">
+                        <!-- Modificato: w-100 e flex-grow-1 per riempire lo spazio verticale disponibile -->
+                        <div class="carousel-inner w-100 flex-grow-1 h-100">
+                            <div class="carousel-item active h-100">
+                                <!-- Modificato: object-fit: cover e h-100 permettono all'immagine di riempire lo spazio senza distorcersi -->
+                                <img src="https://picsum.photos/600/500?random=1" class="d-block w-100 h-100" alt="Immagine {{$article->title}}" style="object-fit: cover;">
                             </div>
-                            <div class="carousel-item">
-                                <img src="https://picsum.photos/600/500?random=2" class="d-block w-100" alt="Immagine {{$article->title}}" style="max-height: 450px; object-fit: cover;">
+                            <div class="carousel-item h-100">
+                                <img src="https://picsum.photos/600/500?random=2" class="d-block w-100 h-100" alt="Immagine {{$article->title}}" style="object-fit: cover;">
                             </div>
-                            <div class="carousel-item">
-                                <img src="https://picsum.photos/600/500?random=3" class="d-block w-100" alt="Immagine {{$article->title}}" style="max-height: 450px; object-fit: cover;">
+                            <div class="carousel-item h-100">
+                                <img src="https://picsum.photos/600/500?random=3" class="d-block w-100 h-100" alt="Immagine {{$article->title}}" style="object-fit: cover;">
                             </div>
                         </div>
                         
@@ -57,7 +61,7 @@
                         
                         <div class="mt-5">
                             <a href="{{ route('article.index') }}" class="main-dark-button">
-                            ← Torna indietro
+                                ← Torna indietro
                             </a>
                         </div>
                     </div>

@@ -35,9 +35,6 @@ p {
 }
 
 /* HEADER */
-/* ==========================================================================
-   HEADER PRINCIPALE
-   ========================================================================== */
 .header-area {
     background-color: #1a1a1a;
     position: fixed;
@@ -77,17 +74,25 @@ p {
 }
 
 .logonav {
-    height: 110px;
+    height: 100px;
     width: auto;
+    max-width: 150px;
     object-fit: contain;
     display: block;
-    margin-top: -5px;
-    transition: all 0.4s ease;
+    margin-top: 1px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease-in-out;
 }
 
 .header-area.navbar-scrolled .logonav {
-    height: 75px; 
+    max-width: 0px !important;
+    height: 75px;
     margin-top: 0;
+    margin-right: -15px !important;
+    opacity: 0;                   
+    visibility: hidden;           
+    padding: 0;
 }
 
 .logo-text {
@@ -551,8 +556,8 @@ footer .under-footer ul li a:hover {
     margin: 10px 0;
 
     text-shadow:
-        0 5px 10px rgba(0,0,0,0.4),
-        0 10px 25px rgba(0,0,0,0.6);
+        0 5px 10px rgba(0, 0, 0, 0.4),
+        0 10px 25px rgba(0, 0, 0, 0.6);
 }
 .category-subtitle {
     color: #dddddd;
@@ -560,7 +565,6 @@ footer .under-footer ul li a:hover {
     letter-spacing: 1px;
     margin-top: 15px;
 }
-
 
 .empty-category {
     color: white;
@@ -652,7 +656,6 @@ footer .under-footer ul li a:hover {
 
 /* RESPONSIVE CATEGORY PAGE */
 @media (max-width: 768px) {
-
     .category-title {
         font-size: 45px;
     }
@@ -660,5 +663,4 @@ footer .under-footer ul li a:hover {
     .category-subtitle {
         font-size: 15px;
     }
-
 }
