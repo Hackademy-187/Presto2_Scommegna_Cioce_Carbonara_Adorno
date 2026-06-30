@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh;">
+    <div style="background: linear-gradient(135deg, #f7a204 0%, #130c00d7 100%); min-height: 100vh;">
 
         <!-- HEADER CATEGORIA -->
         <section class="category-hero pt-5 pb-4 text-center" style="margin-top: 50px;">
