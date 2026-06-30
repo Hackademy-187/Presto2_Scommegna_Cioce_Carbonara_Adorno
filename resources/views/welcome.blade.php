@@ -1,5 +1,25 @@
 <x-layout>
 
+<<<<<<< HEAD
+=======
+    @if (session()->has('errorMessage'))
+    <div class="alert alert-danger text-center shadow rounded w-50">
+        {{ session('errorMessage') }}
+    </div>
+    @endif
+
+
+
+    @if (session()->has('message'))
+    <div class="alert alert-success text-center shadow rounded w-50">
+        {{ session('message') }}
+    </div>
+    @endif
+
+
+
+    <!-- Tutta la pagina con sfondo scuro -->
+>>>>>>> 564acd46077df92efbc6c6b6508a86d40556d747
     <div style="background: linear-gradient(135deg, #1c483c 0%, #1a3028 100%); min-height: 100vh;">
 
         <!-- HERO SECTION -->
