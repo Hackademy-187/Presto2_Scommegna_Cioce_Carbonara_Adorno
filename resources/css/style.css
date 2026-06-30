@@ -246,12 +246,13 @@ p {
     right: 40px;
 }
 /* ========================= */
-/* HERO SECTION - EFFETTO iBEER CON SCHIUMA */
+/* HERO SECTION - SPILLATURA SUPER MARCATA */
 /* ========================= */
 
 :root {
-    --beer-level: 0%; /* Invertiamo la logica nel JS per comodità di calcolo: 0% = pieno, 100% = vuoto */
+    --beer-level: 0%;
     --beer-angle: 0deg;
+    --foam-height: 50px; /* Alziamo anche la base minima della schiuma */
 }
 
 .hero-section {
@@ -280,37 +281,51 @@ p {
         120% 110%, 
         -20% 110%
     );
-    transition: clip-path 0.12s cubic-bezier(0.1, 0.8, 0.3, 1);
+    transition: clip-path 0.1s cubic-bezier(0.1, 0.8, 0.2, 1); /* Ancora più reattivo */
 }
 
-/* NUOVO: Livello Schiuma Dinamica */
+/* Livello Schiuma Massiccia */
 .beer-foam-layer {
     position: absolute;
     inset: 0;
-    z-index: 1; /* Sta sopra la birra */
+    z-index: 1;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255, 255, 245, 0.95) 0%, rgba(245, 235, 215, 0.8) 40px, transparent 60px);
     
-    /* Il clip path della schiuma è leggermente più alto (-2vh) e amplifica l'angolo per simulare lo slush del liquido */
+    /* Gradiente nettamente più compatto e bianco opaco per sembrare schiuma densa */
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(255, 254, 245, 0.95) calc(var(--foam-height) - 20px), 
+        rgba(240, 230, 210, 0.8) var(--foam-height),
+        transparent calc(var(--foam-height) + 35px)
+    );
+    
+    /* Moltiplichiamo l'angolo (* 1.8) per far sbandare la schiuma molto più della birra */
     clip-path: polygon(
-        -20% calc(var(--beer-level) - (var(--beer-angle) * 1.3) - 2vh), 
-        120% calc(var(--beer-level) + (var(--beer-angle) * 1.3) - 2vh), 
+        -20% calc(var(--beer-level) - (var(--beer-angle) * 1.8) - 3vh), 
+        120% calc(var(--beer-level) + (var(--beer-angle) * 1.8) - 3vh), 
         120% 110%, 
         -20% 110%
     );
-    transition: clip-path 0.1s cubic-bezier(0.1, 0.8, 0.3, 1);
+    transition: clip-path 0.08s cubic-bezier(0.1, 0.8, 0.2, 1);
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.7) 100%);
-    z-index: 2; /* Sopra la schiuma, sotto i testi */
+    /* Ridotta l'opacità: il centro passa a un leggerissimo 5% e il massimo esterno scende al 50% */
+    background: 
+        radial-gradient(
+            circle,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+        ),
+        linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
+    z-index: 2; /* Rimane sopra la schiuma e sotto il testo */
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 3; /* Salva la scritta e la rimette in primissimo piano */
     padding: 20px;
 }
 

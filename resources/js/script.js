@@ -42,30 +42,48 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollY = window.scrollY;
     let targetAngle = 0;
     let currentAngle = 0;
+    let foamHeightTarget = 50; 
+    let currentFoamHeight = 50;
 
     window.addEventListener('scroll', () => {
         const heroHeight = hero.offsetHeight;
         const currentScrollY = window.scrollY;
 
-        // Calcolo del livello (0% in cima, 100% quando superi la hero)
         let scrollPercent = (currentScrollY / heroHeight) * 100;
         let beerLevel = Math.min(Math.max(scrollPercent, 0), 100);
 
-        // Calcolo inerzia per l'effetto onda (iBeer style)
         let scrollDelta = currentScrollY - lastScrollY;
-        targetAngle = Math.min(Math.max(scrollDelta * 0.5, -20), 20); // Angolo max sbandata schiuma
+
+        // SPILLATURA ESAGERATA: Se si sale, la schiuma si gonfia a dismisura
+        if (scrollDelta < 0) {
+            // Moltiplicatore alzato a 3.5 e tetto massimo portato a 180px
+            foamHeightTarget = Math.min(50 + Math.abs(scrollDelta) * 3.5, 180); 
+        } else {
+            // Anche quando scendi, se vai veloce la schiuma si agita un po' di più (fino a 70px)
+            foamHeightTarget = Math.min(50 + scrollDelta * 0.5, 70);
+        }
+
+        // Angolo di sbandata laterale potenziato (max 35 gradi invece di 22)
+        targetAngle = Math.min(Math.max(scrollDelta * 0.8, -35), 35);
 
         document.documentElement.style.setProperty('--beer-level', `${beerLevel}%`);
         
         lastScrollY = currentScrollY;
     });
 
-    // Fisica per lo smorzamento dell'onda quando ti fermi
+    // Fisica di oscillazione specidica per rendere l'onda più elastica
     function updatePhysics() {
-        currentAngle += (targetAngle - currentAngle) * 0.15;
-        targetAngle += (0 - targetAngle) * 0.08; // Ritorna al centro con molleggio
+        // Ridotto il freno (0.12) per far durare il "rimbalzo" dell'onda un po' più a lungo
+        currentAngle += (targetAngle - currentAngle) * 0.12;
+        targetAngle += (0 - targetAngle) * 0.05; 
+
+        // La schiuma si gonfia istantaneamente ma si riassesta con un bell'effetto "morbido"
+        currentFoamHeight += (foamHeightTarget - currentFoamHeight) * 0.14;
+        foamHeightTarget += (50 - foamHeightTarget) * 0.04;
 
         document.documentElement.style.setProperty('--beer-angle', `${currentAngle}vh`);
+        document.documentElement.style.setProperty('--foam-height', `${currentFoamHeight}px`);
+        
         requestAnimationFrame(updatePhysics);
     }
 
