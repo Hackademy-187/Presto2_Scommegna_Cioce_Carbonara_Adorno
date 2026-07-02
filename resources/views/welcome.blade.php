@@ -24,7 +24,15 @@
 
             <div class="hero-content">
                 <span class="section-label">{{ __('ui.welcome') }}</span>
-                <h1 class="hero-title">Subirra.it</h1>
+               <div class="hero-title-wrapper">
+    <img 
+        class="hero-title-logo" 
+        src="{{ asset('/storage/images/logo.png') }}" 
+        alt="Logo Subirra"
+    >
+
+    <h1 class="hero-title">Subirra.it</h1>
+</div>
                 <p class="hero-subtitle">{{ __('ui.marketplace') }}</p>
 
                 <div class="my-4">

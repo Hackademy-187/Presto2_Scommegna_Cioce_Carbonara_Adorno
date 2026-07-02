@@ -1143,7 +1143,7 @@ footer .under-footer ul li a:hover {
 
     object-fit: contain !important;
 
-    transform: scale(2.75) !important;
+    transform: scale(2.80) !important;
     transform-origin: center center !important;
 
     opacity: 1 !important;
@@ -1183,4 +1183,152 @@ footer .under-footer ul li a:hover {
 
 .header-area.navbar-scrolled .logo-text {
     font-size: 30px !important;
+}
+/* =========================
+   NAVBAR - logo più leggibile
+========================= */
+
+.header-area .main-nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-area .main-nav .logo,
+.header-area .main-nav .logo * {
+    text-shadow: 
+        0 3px 4px rgba(0, 0, 0, 0.45),
+        0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.header-area .main-nav .logo img,
+.header-area .main-nav .logonav {
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.45))
+            drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+}
+
+/* se "Subirra.it" è testo nella navbar */
+.header-area .main-nav .logo span,
+.header-area .main-nav .logo h1,
+.header-area .main-nav .logo h2,
+.header-area .main-nav .logo .brand-name {
+    color: #ffffff;
+    -webkit-text-stroke: 1px rgba(86, 52, 6, 0.55);
+    text-shadow:
+        0 4px 5px rgba(0, 0, 0, 0.55),
+        0 0 14px rgba(86, 52, 6, 0.45);
+}
+/* =========================
+   HERO - testi più visibili
+========================= */
+
+.hero-content {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* scritta piccola: "Benvenuto su" */
+.hero-content .section-label {
+    color: #ffd36a !important;
+    opacity: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: 4px !important;
+    text-transform: uppercase !important;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.95),
+        0 0 14px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* titolo grande Subirra.it */
+.hero-content h1,
+.hero-content h2,
+.hero-content .hero-title {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 900 !important;
+    text-shadow:
+        0 6px 8px rgba(0, 0, 0, 0.9),
+        0 0 22px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* sottotitolo */
+.hero-content .hero-subtitle {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    text-shadow:
+        0 3px 5px rgba(0, 0, 0, 0.95),
+        0 0 16px rgba(0, 0, 0, 0.8) !important;
+}
+/* =========================
+   HERO - logo accanto al titolo
+========================= */
+
+.hero-title-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    margin: 16px 0 18px !important;
+}
+
+.hero-title-wrapper .hero-title {
+    margin: 0 !important;
+    line-height: 1 !important;
+}
+
+.hero-title-logo {
+    width: clamp(75px, 7vw, 125px) !important;
+    height: auto !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    filter: 
+        drop-shadow(0 5px 6px rgba(0, 0, 0, 0.65))
+        drop-shadow(0 0 12px rgba(255, 255, 255, 0.25)) !important;
+}
+
+@media (max-width: 768px) {
+    .hero-title-wrapper {
+        gap: 1px !important;
+    }
+
+    .hero-title-logo {
+        width: clamp(50px, 14vw, 75px) !important;
+    }
+}
+.hero-title-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    gap: 0 !important;
+    margin: 16px auto 18px !important;
+}
+
+.hero-title-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    gap: 0 !important;
+    margin: 16px auto 18px !important;
+}
+
+.hero-title-logo {
+    width: clamp(120px, 15vw, 190px) !important;
+    /* avvicina il logo al testo */
+    margin-right: clamp(-25px, -2vw, -8px) !important;
+    flex-shrink: 0;
+}
+
+.hero-title-wrapper .hero-title {
+    margin: 0 !important;
+}
+
+/* contrappeso invisibile: bilancia il logo così il TESTO resta centrato sulla pagina */
+.hero-title-wrapper::after {
+    content: "";
+    display: block;
+    width: clamp(120px, 15vw, 190px);
+    flex-shrink: 0;
 }
