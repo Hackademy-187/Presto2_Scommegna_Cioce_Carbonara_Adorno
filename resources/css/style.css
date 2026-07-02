@@ -55,158 +55,189 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 84px;
 
     display: flex;
     align-items: center;
 
-    background: linear-gradient(
-        to bottom,
-        rgb(255, 255, 255) 0%,
-        rgb(255, 254, 245) 35%,
-        rgb(248, 242, 228) 70%,
-        rgb(240, 230, 210) 100%
-    );
+    background:
+        radial-gradient(circle at 8% 28%, rgba(255, 255, 255, 0.95) 0 5px, transparent 6px),
+        radial-gradient(circle at 19% 62%, rgba(255, 255, 255, 0.75) 0 3px, transparent 4px),
+        radial-gradient(circle at 31% 35%, rgba(255, 255, 255, 0.85) 0 4px, transparent 5px),
+        radial-gradient(circle at 48% 68%, rgba(255, 255, 255, 0.7) 0 3px, transparent 4px),
+        radial-gradient(circle at 64% 30%, rgba(255, 255, 255, 0.85) 0 5px, transparent 6px),
+        radial-gradient(circle at 78% 60%, rgba(255, 255, 255, 0.75) 0 4px, transparent 5px),
+        radial-gradient(circle at 92% 35%, rgba(255, 255, 255, 0.9) 0 5px, transparent 6px),
+        linear-gradient(
+            to bottom,
+            #fffdf2 0%,
+            #fff5cd 45%,
+            #f4df9b 100%
+        );
 
     backdrop-filter: blur(8px);
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.12),
-        inset 0 -2px 5px rgba(255, 255, 255, 0.45);
+        0 8px 24px rgba(43, 26, 14, 0.22),
+        inset 0 -6px 14px rgba(170, 112, 25, 0.16),
+        inset 0 2px 8px rgba(255, 255, 255, 0.8);
 
     transition: all 0.35s ease;
-
     overflow: visible;
-
     z-index: 1000;
-}
-.header-area::before {
-    content: "";
-
-    position: absolute;
-
-    top: -18px;
-
-    left: 0;
-
-    width: 100%;
-
-    height: 38px;
-
-    background:
-        radial-gradient(circle at 5% 90%, white 0 20px, transparent 21px),
-        radial-gradient(circle at 14% 65%, white 0 24px, transparent 25px),
-        radial-gradient(circle at 26% 88%, white 0 18px, transparent 19px),
-        radial-gradient(circle at 38% 65%, white 0 25px, transparent 26px),
-        radial-gradient(circle at 50% 88%, white 0 19px, transparent 20px),
-        radial-gradient(circle at 63% 65%, white 0 24px, transparent 25px),
-        radial-gradient(circle at 75% 88%, white 0 18px, transparent 19px),
-        radial-gradient(circle at 88% 65%, white 0 24px, transparent 25px),
-        radial-gradient(circle at 98% 88%, white 0 18px, transparent 19px);
-
-    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.5));
-
-    animation: foamFloat 7s ease-in-out infinite;
+    isolation: isolate;
 }
 
 .header-area.navbar-scrolled {
-    height: 60px;
-
+    height: 64px;
     box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.15),
-        inset 0 -2px 4px rgba(255, 255, 255, 0.35);
+        0 6px 18px rgba(43, 26, 14, 0.2),
+        inset 0 -5px 12px rgba(170, 112, 25, 0.13);
 }
+
+/* Micro bolle nella navbar */
+.header-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(circle at 5% 25%, rgba(255,255,255,0.9) 0 7px, transparent 8px),
+        radial-gradient(circle at 12% 78%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
+        radial-gradient(circle at 23% 35%, rgba(255,255,255,0.85) 0 5px, transparent 6px),
+        radial-gradient(circle at 36% 70%, rgba(255,255,255,0.7) 0 4px, transparent 5px),
+        radial-gradient(circle at 51% 30%, rgba(255,255,255,0.9) 0 6px, transparent 7px),
+        radial-gradient(circle at 68% 75%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
+        radial-gradient(circle at 83% 32%, rgba(255,255,255,0.85) 0 5px, transparent 6px),
+        radial-gradient(circle at 96% 68%, rgba(255,255,255,0.65) 0 4px, transparent 5px);
+
+    opacity: 0.75;
+}
+
+/* Schiuma sotto la navbar */
+.header-area::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -38px;
+    width: 100%;
+    height: 62px;
+    pointer-events: none;
+    z-index: 1;
+
+    background:
+        radial-gradient(ellipse at 2% 8%, #fffdf2 0 20px, transparent 21px),
+        radial-gradient(ellipse at 6% 12%, #fff4bf 0 32px, transparent 33px),
+        radial-gradient(ellipse at 12% 5%, #fffbea 0 24px, transparent 25px),
+        radial-gradient(ellipse at 18% 15%, #fff2b6 0 34px, transparent 35px),
+        radial-gradient(ellipse at 25% 6%, #fffdf3 0 22px, transparent 23px),
+        radial-gradient(ellipse at 33% 14%, #fff4c4 0 33px, transparent 34px),
+        radial-gradient(ellipse at 41% 6%, #fffbea 0 24px, transparent 25px),
+        radial-gradient(ellipse at 50% 15%, #fff1b3 0 35px, transparent 36px),
+        radial-gradient(ellipse at 59% 7%, #fffdf2 0 23px, transparent 24px),
+        radial-gradient(ellipse at 67% 14%, #fff4c2 0 33px, transparent 34px),
+        radial-gradient(ellipse at 75% 6%, #fffbea 0 24px, transparent 25px),
+        radial-gradient(ellipse at 84% 15%, #fff1b7 0 34px, transparent 35px),
+        radial-gradient(ellipse at 92% 7%, #fffdf2 0 24px, transparent 25px),
+        radial-gradient(ellipse at 98% 13%, #fff3bf 0 32px, transparent 33px);
+
+    filter:
+        drop-shadow(0 5px 4px rgba(43, 26, 14, 0.16))
+        drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.8));
+
+    animation: foamDripFloat 6s ease-in-out infinite;
+}
+
+@keyframes foamDripFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+}
+
 .header-area .main-nav {
-    height: 80px;
+    position: relative;
+    z-index: 3;
+
+    height: 84px;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 24px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     background: transparent;
-    transition: all 0.4s ease-in-out;
-    max-width: 1400px;
-    margin: auto;
+    transition: all 0.35s ease;
 }
 
 .header-area.navbar-scrolled .main-nav {
-    height: 60px;
+    height: 64px;
 }
 
-.header-area .main-nav .logo{
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    text-decoration:none;
-
-    transition:.35s;
-
-    position:relative;
-}
-.logonav{
-    width:48px;
-    height:48px;
+.header-area .main-nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    transition: 0.35s;
+    position: relative;
+    z-index: 4;
 }
 
-.header-area.navbar-scrolled .logonav{
-    width: 0;
-    opacity: 0;
-    margin-right: -12px;
-    visibility: hidden;
+.logonav {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: all 0.35s ease;
 }
 
 .header-area.navbar-scrolled .logonav {
+    width: 0;
     max-width: 0;
-
     opacity: 0;
-
     margin-right: -18px;
-
     visibility: hidden;
 }
 
-.logo-text{
-
-    color:#3a2915;
-
-    font-size:30px;
-
-    font-weight:900;
-
-    letter-spacing:-1px;
-
-    text-transform:uppercase;
-
+.logo-text {
+    font-family: "Poppins", sans-serif;
+    color: var(--beer-dark);
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
     text-shadow:
-
-        0 1px 0 rgba(255,255,255,.9),
-
-        0 2px 4px rgba(0,0,0,.08);
-
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 3px 8px rgba(43, 26, 14, 0.12);
 }
-.header-area .logo:hover{
 
-    transform:translateY(-2px);
-
-}
-.header-area .logo:hover .logonav{
-
-    filter:
-
-        drop-shadow(0 8px 14px rgba(0,0,0,.18));
-
-}
 .header-area.navbar-scrolled .logo-text {
     font-size: 24px;
 }
-.header-area.navbar-scrolled .logo {
-    padding: 6px 14px;
 
-    border-radius: 40px;
+.header-area .logo:hover {
+    transform: translateY(-2px);
 }
+
+.header-area .logo:hover .logonav {
+    filter: drop-shadow(0 8px 14px rgba(43, 26, 14, 0.22));
+}
+
+/* Parte destra navbar */
 .nav-container-right {
     display: flex;
     align-items: center;
-    gap: 38px;
+    gap: 18px;
+    position: relative;
+    z-index: 4;
 }
 
 .header-area .main-nav .nav {
@@ -218,9 +249,10 @@ p {
 }
 
 .header-area .main-nav .nav li {
-    margin: 0 8px;
+    margin: 0 5px;
 }
 
+/* Font navbar uguale al titolo hero */
 .header-area .main-nav .nav li a {
     position: relative;
 
@@ -228,135 +260,197 @@ p {
     align-items: center;
 
     height: 42px;
+    padding: 0 5px;
 
-    color: #4b3213;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
 
-    font-size: 15px;
+    color: var(--beer-dark) !important;
 
-    font-weight: 700;
-
-    letter-spacing: 0.8px;
-
-    padding: 0 6px;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85),
+        0 2px 5px rgba(43, 26, 14, 0.08);
 
     transition: all 0.3s ease;
 }
+
 .header-area .main-nav .nav li a::after {
     content: "";
-
     position: absolute;
-
     left: 50%;
-    bottom: 3px;
+    bottom: 4px;
 
     width: 0;
+    height: 3px;
 
-    height: 2px;
-
-    background: #d4a843;
+    background: linear-gradient(
+        to right,
+        var(--beer-gold),
+        var(--beer-amber)
+    );
 
     border-radius: 50px;
-
-    transition: 0.3s ease;
-
     transform: translateX(-50%);
+    transition: 0.3s ease;
 }
+
 .header-area .main-nav .nav li:hover > a,
 .header-area .main-nav .nav li > a.active {
-    color: #b87300 !important;
+    color: var(--beer-amber) !important;
 }
 
 .header-area .main-nav .nav li:hover > a::after,
 .header-area .main-nav .nav li > a.active::after {
-    width: 80%;
+    width: 75%;
 }
 
+/* Submenu */
 .header-area .main-nav .nav li.submenu {
     position: relative;
-    padding-right: 28px;
+    padding-right: 22px;
 }
 
-.header-area .main-nav .nav li.submenu:after {
+.header-area .main-nav .nav li.submenu::after {
     font-family: FontAwesome;
     content: "\f107";
     font-size: 11px;
-    color: #ccc;
+    color: var(--beer-dark);
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 8px;
+    top: 14px;
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .header-area .main-nav .nav li.submenu ul {
     position: absolute;
-    width: 200px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    top: 50px;
+    top: 52px;
+    left: 0;
+
+    width: 220px;
+
     opacity: 0;
-    transform: translateY(2em);
     visibility: hidden;
-    z-index: -1;
-    transition:
-        all 0.3s ease-in-out,
-        visibility 0s linear 0.3s,
-        z-index 0s linear 0.01s;
-    border-radius: 4px;
+    transform: translateY(14px);
+
     list-style: none;
     padding-left: 0;
     margin-left: 0;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background: #fffdf3;
+
+    box-shadow:
+        0 16px 35px rgba(43, 26, 14, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+
+    z-index: 1002;
+    transition: all 0.3s ease;
 }
 
 .header-area.navbar-scrolled .main-nav .nav li.submenu ul {
-    top: 40px;
+    top: 44px;
+}
+
+.header-area .main-nav .nav li.submenu:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .header-area .main-nav .nav li.submenu ul li {
-    margin-left: 0;
-    padding-left: 0;
-    padding-right: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .header-area .main-nav .nav li.submenu ul li a {
     display: block;
-    background: #fffdf8;
-    color: #4b3213 !important;
-    padding-left: 20px;
-    height: 40px;
-    line-height: 40px;
+
+    height: 42px;
+    line-height: 42px;
+    padding: 0 18px;
+
+    background: rgba(255, 253, 243, 0.96);
+    color: var(--beer-dark) !important;
+
+    font-family: "Poppins", sans-serif;
     font-size: 13px;
-    font-weight: 500;
-    border-bottom: 1px solid #ecd8a4;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0;
+
+    border-bottom: 1px solid rgba(212, 168, 67, 0.28);
+
+    text-shadow: none;
+    transition: all 0.25s ease;
 }
+
+.header-area .main-nav .nav li.submenu ul li a::after {
+    display: none;
+}
+
 .header-area .main-nav .nav li.submenu ul li a:hover {
-    background: #d4a843;
+    background: linear-gradient(
+        to right,
+        var(--beer-gold),
+        var(--beer-amber)
+    );
     color: #fff !important;
-    padding-left: 25px;
+    padding-left: 24px;
 }
 
-.header-area .main-nav .nav li.submenu:hover ul {
-    visibility: visible;
-    opacity: 1;
-    z-index: 100;
-    transform: translateY(0);
-    transition-delay: 0s, 0s, 0.3s;
-}
-
+/* Search */
 .search-form-nav {
-    min-width: 200px;
+    min-width: 160px;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 4;
+}
+
+.search-form-nav .form-control {
+    height: 36px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--beer-dark);
+
+    border: 1px solid rgba(212, 168, 67, 0.75);
+    border-radius: 6px 0 0 6px;
+
+    padding: 5px 9px;
+    box-shadow: inset 0 1px 4px rgba(43, 26, 14, 0.08);
+}
+
+.search-form-nav .form-control::placeholder {
+    color: rgba(43, 26, 14, 0.55);
+}
+
+.search-form-nav .form-control:focus {
+    outline: none;
+    border-color: var(--beer-amber);
+    box-shadow:
+        0 0 0 3px rgba(212, 168, 67, 0.18),
+        inset 0 1px 4px rgba(43, 26, 14, 0.08);
 }
 
 .search-form-nav .btn-outline-success {
-    color: #d4a843;
-    border-color: #d4a843;
+    height: 36px;
+    color: var(--beer-amber);
+    border-color: rgba(212, 168, 67, 0.75);
+    background: rgba(255, 250, 225, 0.9);
+    border-radius: 0 6px 6px 0;
 }
 
 .search-form-nav .btn-outline-success:hover {
-    background-color: #d4a843;
+    background-color: var(--beer-gold);
     color: #fff;
-    border-color: #d4a843;
+    border-color: var(--beer-gold);
 }
 
 .header-area .main-nav .menu-trigger {
@@ -370,7 +464,6 @@ p {
     z-index: 99;
     right: 40px;
 }
-
 /* ========================= */
 /* HERO SECTION - SPILLATURA SUPER MARCATA */
 /* ========================= */
@@ -1030,4 +1123,171 @@ footer .under-footer ul li a:hover {
 .search-form-nav .form-control {
     font-size: 12px !important;
     padding: 4px 8px !important;
+}
+/* ========================= */
+/* OVERRIDE FINALE NAVBAR SUBIRRA */
+/* ========================= */
+
+.header-area {
+    height: 88px !important;
+    background:
+        radial-gradient(circle at 6% 26%, rgba(255,255,255,0.95) 0 6px, transparent 7px),
+        radial-gradient(circle at 13% 66%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
+        radial-gradient(circle at 24% 35%, rgba(255,255,255,0.90) 0 5px, transparent 6px),
+        radial-gradient(circle at 38% 70%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
+        radial-gradient(circle at 51% 28%, rgba(255,255,255,0.95) 0 6px, transparent 7px),
+        radial-gradient(circle at 67% 65%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
+        radial-gradient(circle at 82% 34%, rgba(255,255,255,0.90) 0 5px, transparent 6px),
+        radial-gradient(circle at 94% 68%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
+        linear-gradient(
+            to bottom,
+            #fffef5 0%,
+            #fff7d2 42%,
+            #f5df9e 100%
+        ) !important;
+
+    box-shadow:
+        0 8px 25px rgba(43, 26, 14, 0.25),
+        inset 0 -10px 18px rgba(168, 101, 18, 0.16),
+        inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
+
+    overflow: visible !important;
+    z-index: 9999 !important;
+}
+
+/* Contenuto sopra le bolle */
+.header-area .main-nav {
+    height: 88px !important;
+    position: relative !important;
+    z-index: 5 !important;
+    max-width: 1400px !important;
+    padding: 0 32px !important;
+}
+
+/* Titolo Subirra.it nella navbar, stile hero */
+.header-area .main-nav .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.logo-text {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 34px !important;
+    font-weight: 900 !important;
+    letter-spacing: -1.8px !important;
+    text-transform: none !important;
+    color: #ffffff !important;
+
+    -webkit-text-stroke: 1px rgba(43, 26, 14, 0.35);
+
+    text-shadow:
+        0 2px 0 rgba(43, 26, 14, 0.75),
+        0 5px 10px rgba(43, 26, 14, 0.45),
+        0 10px 22px rgba(43, 26, 14, 0.35) !important;
+}
+
+/* Logo immagine */
+.logonav {
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 5px 8px rgba(43, 26, 14, 0.25)) !important;
+}
+
+/* Link navbar più leggibili */
+.header-area .main-nav .nav li a {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 850 !important;
+    letter-spacing: 0.2px !important;
+    color: #2b1a0e !important;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85),
+        0 2px 4px rgba(43, 26, 14, 0.08) !important;
+}
+
+.header-area .main-nav .nav li:hover > a,
+.header-area .main-nav .nav li > a.active {
+    color: #a86512 !important;
+}
+
+/* Freccia categorie */
+.header-area .main-nav .nav li.submenu::after {
+    color: #2b1a0e !important;
+    font-weight: 900 !important;
+}
+
+/* Schiuma realistica sotto navbar */
+.header-area::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: -42px !important;
+    width: 100% !important;
+    height: 70px !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+
+    background:
+        radial-gradient(ellipse at 1% 8%, #fffef5 0 22px, transparent 23px),
+        radial-gradient(ellipse at 5% 16%, #fff0b8 0 36px, transparent 37px),
+        radial-gradient(ellipse at 11% 6%, #fffbea 0 26px, transparent 27px),
+        radial-gradient(ellipse at 17% 18%, #fff3c4 0 38px, transparent 39px),
+        radial-gradient(ellipse at 24% 8%, #fffef2 0 24px, transparent 25px),
+        radial-gradient(ellipse at 31% 17%, #fff0b6 0 37px, transparent 38px),
+        radial-gradient(ellipse at 39% 7%, #fffbea 0 26px, transparent 27px),
+        radial-gradient(ellipse at 47% 18%, #fff3c4 0 39px, transparent 40px),
+        radial-gradient(ellipse at 55% 8%, #fffef4 0 25px, transparent 26px),
+        radial-gradient(ellipse at 63% 17%, #fff0b8 0 38px, transparent 39px),
+        radial-gradient(ellipse at 71% 7%, #fffbea 0 26px, transparent 27px),
+        radial-gradient(ellipse at 79% 18%, #fff3c4 0 37px, transparent 38px),
+        radial-gradient(ellipse at 87% 8%, #fffef2 0 25px, transparent 26px),
+        radial-gradient(ellipse at 95% 17%, #fff0b6 0 38px, transparent 39px),
+        radial-gradient(ellipse at 101% 9%, #fffbea 0 28px, transparent 29px) !important;
+
+    filter:
+        drop-shadow(0 6px 5px rgba(43, 26, 14, 0.20))
+        drop-shadow(0 -2px 1px rgba(255, 255, 255, 0.85)) !important;
+}
+
+/* Micro bolle sopra la schiuma */
+.header-area::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.95) 0 3px, transparent 4px) 20px 12px / 110px 45px repeat,
+        radial-gradient(circle, rgba(255,255,255,0.65) 0 2px, transparent 3px) 55px 28px / 90px 42px repeat,
+        radial-gradient(circle, rgba(255,255,255,0.75) 0 4px, transparent 5px) 80px 8px / 150px 55px repeat !important;
+
+    opacity: 0.8 !important;
+}
+
+/* Search più pulita */
+.search-form-nav .form-control {
+    height: 36px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid rgba(168, 101, 18, 0.45) !important;
+    color: #2b1a0e !important;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600 !important;
+    box-shadow: inset 0 1px 4px rgba(43, 26, 14, 0.08) !important;
+}
+
+.search-form-nav .btn-outline-success {
+    height: 36px !important;
+    color: #a86512 !important;
+    border-color: rgba(168, 101, 18, 0.45) !important;
+    background: rgba(255, 246, 210, 0.95) !important;
+}
+
+.search-form-nav .btn-outline-success:hover {
+    background: #d4a843 !important;
+    color: white !important;
 }
