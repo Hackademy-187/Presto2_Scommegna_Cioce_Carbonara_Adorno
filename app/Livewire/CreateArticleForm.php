@@ -85,7 +85,7 @@ class CreateArticleForm extends Component
             File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
 
-        session()->flash('success', 'Articolo creato correttamente');
+        session()->flash('success', 'Articolo creato correttamente, in attesa di approvazione da parte del revisore');
         
         // 2. Puliamo il modulo (campi di testo e immagini)
         $this->cleanForm();

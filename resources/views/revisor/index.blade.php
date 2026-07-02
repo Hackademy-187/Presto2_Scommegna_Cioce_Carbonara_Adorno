@@ -70,7 +70,7 @@
 
                         <div class="d-flex justify-content-between gap-2 mt-4">
                             <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST"
-                                class="w-50">
+                                class="w-50" onsubmit="return confirm('Vuoi rifiutare davvero l\'articolo?');">
                                 @csrf
                                 @method('PATCH')
                                 <button class="btn py-2.5 w-100 fw-bold rounded-pill"

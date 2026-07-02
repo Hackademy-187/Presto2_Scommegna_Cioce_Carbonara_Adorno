@@ -1,7 +1,23 @@
 <div class="container py-5" style="min-height: 100vh;">
 
     @if (session()->has('success'))
-        <div class="text-center py-3 mb-4" style="background-color: #d4a843; color: #1a1a1a; font-weight: 700; border-radius: 6px; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(212, 168, 67, 0.2);">
+        <div id="success-toast" class="text-center" style="
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            z-index: 9999;
+            background-color: #fff3c4;
+            color: #2b1a0e;
+            font-weight: 700;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+            padding: 16px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            max-width: 90%;
+        ">
             {{ session('success') }}
         </div>
     @endif
@@ -88,8 +104,26 @@
         </div>
     </form>
 
-    @script
+   @script
     <script>
+        const toast = document.getElementById('success-toast');
+        if (toast) {
+            showToast(toast);
+        }
+
+        function showToast(el) {
+            requestAnimationFrame(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateX(-50%) translateY(0)';
+            });
+
+            setTimeout(() => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(-50%) translateY(-20px)';
+                setTimeout(() => el.remove(), 400);
+            }, 3500);
+        }
+
         $wire.on('article-created', () => {
             // 1. Riporta su la pagina con lo scroll fluido
             window.scrollTo({
@@ -102,8 +136,17 @@
             if (fileInput) {
                 fileInput.value = '';
             }
+
+            // 3. Anima il toast appena Livewire lo inserisce nel DOM
+            setTimeout(() => {
+                const newToast = document.getElementById('success-toast');
+                if (newToast) {
+                    showToast(newToast);
+                }
+            }, 50);
         });
     </script>
     @endscript
+   
 
 </div>
