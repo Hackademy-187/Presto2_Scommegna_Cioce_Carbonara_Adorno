@@ -1291,3 +1291,250 @@ footer .under-footer ul li a:hover {
     background: #d4a843 !important;
     color: white !important;
 }
+/* ========================= */
+/* SCHIUMA NAVBAR - EFFETTO FOAM CHE FUORIESCE */
+/* ========================= */
+
+.header-area {
+    overflow: visible !important;
+    isolation: isolate !important;
+}
+
+/* La navbar deve stare sopra alla schiuma */
+.header-area .main-nav,
+.header-area .logo,
+.nav-container-right,
+.search-form-nav {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Schiuma che fuoriesce SOPRA la navbar */
+.header-area::before {
+    content: "" !important;
+    position: absolute !important;
+    left: -2% !important;
+    top: -24px !important;
+    width: 104% !important;
+    height: 52px !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+
+    background:
+        radial-gradient(circle at 2% 34px, #fffef7 0 22px, transparent 23px),
+        radial-gradient(circle at 8% 28px, #fff7d8 0 26px, transparent 27px),
+        radial-gradient(circle at 15% 36px, #fffdf0 0 20px, transparent 21px),
+        radial-gradient(circle at 22% 30px, #fff4c7 0 27px, transparent 28px),
+        radial-gradient(circle at 30% 38px, #fffef7 0 21px, transparent 22px),
+        radial-gradient(circle at 39% 29px, #fff7d8 0 28px, transparent 29px),
+        radial-gradient(circle at 48% 36px, #fffdf0 0 20px, transparent 21px),
+        radial-gradient(circle at 57% 30px, #fff4c7 0 27px, transparent 28px),
+        radial-gradient(circle at 66% 38px, #fffef7 0 21px, transparent 22px),
+        radial-gradient(circle at 75% 29px, #fff7d8 0 28px, transparent 29px),
+        radial-gradient(circle at 84% 36px, #fffdf0 0 20px, transparent 21px),
+        radial-gradient(circle at 93% 30px, #fff4c7 0 27px, transparent 28px),
+        radial-gradient(circle at 101% 36px, #fffef7 0 23px, transparent 24px);
+
+    filter:
+        drop-shadow(0 3px 3px rgba(43, 26, 14, 0.12))
+        drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.85)) !important;
+
+    opacity: 0.98 !important;
+    animation: foamTopMove 7s ease-in-out infinite !important;
+}
+
+
+/* Schiuma che cola / fuoriesce SOTTO la navbar */
+.header-area::after {
+    content: "" !important;
+    position: absolute !important;
+    left: -2% !important;
+    bottom: -52px !important;
+    width: 104% !important;
+    height: 92px !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+
+    background:
+        /* base cremosa continua */
+        linear-gradient(
+            to bottom,
+            rgba(255, 254, 247, 0.98) 0%,
+            rgba(255, 247, 214, 0.96) 35%,
+            rgba(255, 239, 185, 0.88) 62%,
+            rgba(255, 239, 185, 0) 100%
+        ),
+
+        /* bolle grandi sovrapposte, effetto massa di schiuma */
+        radial-gradient(circle at 1% 18px, #fffef7 0 24px, transparent 25px),
+        radial-gradient(circle at 6% 30px, #fff4c8 0 34px, transparent 35px),
+        radial-gradient(circle at 12% 17px, #fffdf0 0 25px, transparent 26px),
+        radial-gradient(circle at 18% 34px, #fff1bc 0 36px, transparent 37px),
+        radial-gradient(circle at 25% 18px, #fffef7 0 24px, transparent 25px),
+        radial-gradient(circle at 32% 33px, #fff4c8 0 35px, transparent 36px),
+        radial-gradient(circle at 39% 16px, #fffdf0 0 26px, transparent 27px),
+        radial-gradient(circle at 47% 35px, #fff1bc 0 38px, transparent 39px),
+        radial-gradient(circle at 55% 18px, #fffef7 0 25px, transparent 26px),
+        radial-gradient(circle at 63% 33px, #fff4c8 0 35px, transparent 36px),
+        radial-gradient(circle at 71% 16px, #fffdf0 0 26px, transparent 27px),
+        radial-gradient(circle at 79% 35px, #fff1bc 0 37px, transparent 38px),
+        radial-gradient(circle at 87% 18px, #fffef7 0 25px, transparent 26px),
+        radial-gradient(circle at 95% 33px, #fff4c8 0 35px, transparent 36px),
+        radial-gradient(circle at 102% 18px, #fffdf0 0 28px, transparent 29px),
+
+        /* microbolle dentro la schiuma */
+        radial-gradient(circle at 9% 30px, rgba(255,255,255,0.95) 0 3px, transparent 4px),
+        radial-gradient(circle at 21% 19px, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 36% 39px, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+        radial-gradient(circle at 52% 24px, rgba(255,255,255,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 68% 42px, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+        radial-gradient(circle at 83% 22px, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 94% 42px, rgba(255,255,255,0.95) 0 3px, transparent 4px) !important;
+
+    filter:
+        drop-shadow(0 7px 6px rgba(43, 26, 14, 0.22))
+        drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.9)) !important;
+
+    opacity: 0.98 !important;
+    animation: foamBottomMove 6s ease-in-out infinite !important;
+}
+
+
+/* Movimento leggero, non effetto cartone */
+@keyframes foamTopMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(2px);
+    }
+}
+
+@keyframes foamBottomMove {
+    0%, 100% {
+        transform: translateY(0) scaleX(1);
+    }
+
+    50% {
+        transform: translateY(3px) scaleX(1.008);
+    }
+}
+/* ========================= */
+/* LOGO GRANDE SENZA FAR ANDARE A CAPO LA NAVBAR */
+/* ========================= */
+
+.header-area,
+.header-area .main-nav {
+    height: 92px !important;
+}
+
+/* Impedisce alla navbar di andare a capo */
+.header-area .main-nav {
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+}
+
+.nav-container-right {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    justify-content: flex-end !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+}
+
+.header-area .main-nav .nav {
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+}
+
+.header-area .main-nav .nav li a {
+    white-space: nowrap !important;
+}
+
+/* Logo: dimensione reale contenuta, ma ingrandito visivamente */
+.logonav {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+
+    transform: scale(1.55) !important;
+    transform-origin: center left !important;
+
+    object-fit: contain !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-width: none !important;
+
+    filter:
+        drop-shadow(0 7px 10px rgba(43, 26, 14, 0.35))
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.85)) !important;
+
+    position: relative !important;
+    z-index: 20 !important;
+}
+
+/* Spazio tra logo ingrandito e scritta */
+.header-area .main-nav .logo {
+    flex: 0 0 auto !important;
+    gap: 30px !important;
+    margin-right: 18px !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+}
+
+/* Titolo nella navbar: grande ma non enorme, altrimenti mangia spazio */
+.logo-text {
+    font-size: 34px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+/* Search un po' più compatta */
+.search-form-nav {
+    min-width: 130px !important;
+    max-width: 170px !important;
+    flex: 0 1 170px !important;
+}
+
+.search-form-nav .form-control {
+    width: 100% !important;
+    font-size: 12px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+/* Menu leggermente più compatto */
+.header-area .main-nav .nav li {
+    margin: 0 2px !important;
+}
+
+.header-area .main-nav .nav li a {
+    font-size: 12.5px !important;
+    padding: 0 4px !important;
+}
+
+/* Anche quando scrolli, il logo non deve sparire */
+.header-area.navbar-scrolled {
+    height: 76px !important;
+}
+
+.header-area.navbar-scrolled .main-nav {
+    height: 76px !important;
+}
+
+.header-area.navbar-scrolled .logonav {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    transform: scale(1.4) !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-width: none !important;
+    margin-right: 0 !important;
+}
+
+.header-area.navbar-scrolled .logo-text {
+    font-size: 28px !important;
+}

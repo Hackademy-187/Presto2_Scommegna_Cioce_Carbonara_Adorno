@@ -12,7 +12,6 @@ use Livewire\WithFileUploads;
 
 class CreateArticleForm extends Component
 {
-
     use WithFileUploads;
 
     public $images = [];
@@ -31,28 +30,6 @@ class CreateArticleForm extends Component
     public $category;
 
     public $article;
-
-    public function save()
-    {
-        $this->validate();
-
-        $this->article = Article::create([
-            'title'       => $this->title,
-            'description' => $this->description,
-            'price'       => $this->price,
-            'category_id' => $this->category,
-            'user_id'     => Auth::id()
-        ]);
-        
-
-
-        session()->flash('success', 'Articolo creato correttamente');
-        $this->cleanForm();
-
-
-        // Lancia l'evento per il browser
-        $this->dispatch('article-created');
-    }
 
     public function render()
     {
@@ -75,7 +52,6 @@ class CreateArticleForm extends Component
     {
         if (in_array($key, array_keys($this->images))) {
             unset($this->images[$key]);
-
             $this->images = array_values($this->images);
         }
     }
@@ -92,18 +68,14 @@ class CreateArticleForm extends Component
             'user_id'     => Auth::id(),
         ]);
 
-        $this->temporary_images = [];
-        $this->images = [];
+        // 1. Prepariamo le anteprime prima di svuotare o salvare definitivamente
+        $savedPreviews = [];
+        foreach ($this->images as $image) {
+            // Generiamo l'URL temporaneo di Livewire per il frontend
+            $savedPreviews[] = $image->temporaryUrl();
+        }
 
-        $this->title = '';
-        $this->description = '';
-        $this->price = '';
-        $this->category = '';
-
-        session()->flash('success', 'Articolo creato con successo!');
-    
-
-        // Salva le immagini e le associa all'articolo appena creato
+        // Salva le immagini nel database/storage e avvia il Job di resize
         if (count($this->images) > 0) {
             foreach ($this->images as $image) {
                 $newFileName = "articles/{$this->article->id}";
@@ -114,7 +86,12 @@ class CreateArticleForm extends Component
         }
 
         session()->flash('success', 'Articolo creato correttamente');
+        
+        // 2. Puliamo il modulo (campi di testo e immagini)
         $this->cleanForm();
+
+        // 3. Spariamo l'evento al browser passando gli URL delle foto salvate
+        $this->dispatch('article-created', ['previews' => $savedPreviews]);
     }
 
     protected function cleanForm()
@@ -123,5 +100,8 @@ class CreateArticleForm extends Component
         $this->description = '';
         $this->category = '';
         $this->price = '';
+        // Svuotiamo anche le proprietà delle immagini così il form torna vergine
+        $this->images = [];
+        $this->temporary_images = null;
     }
 }
