@@ -49,311 +49,305 @@ p {
     color: #fff3c4; /* Testo color schiuma/chiaro per risaltare sul fondo scuro */
 }
 
-/* HEADER */
+/* HEADER - NAVBAR SUBIRRA PULITA */
 .header-area {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 84px;
+    height: 88px;
 
     display: flex;
     align-items: center;
 
     background:
-        radial-gradient(circle at 8% 28%, rgba(255, 255, 255, 0.95) 0 5px, transparent 6px),
-        radial-gradient(circle at 19% 62%, rgba(255, 255, 255, 0.75) 0 3px, transparent 4px),
-        radial-gradient(circle at 31% 35%, rgba(255, 255, 255, 0.85) 0 4px, transparent 5px),
-        radial-gradient(circle at 48% 68%, rgba(255, 255, 255, 0.7) 0 3px, transparent 4px),
-        radial-gradient(circle at 64% 30%, rgba(255, 255, 255, 0.85) 0 5px, transparent 6px),
-        radial-gradient(circle at 78% 60%, rgba(255, 255, 255, 0.75) 0 4px, transparent 5px),
-        radial-gradient(circle at 92% 35%, rgba(255, 255, 255, 0.9) 0 5px, transparent 6px),
+        radial-gradient(circle at 8% 24%, rgba(255, 255, 255, 0.75) 0 3px, transparent 4px),
+        radial-gradient(circle at 22% 62%, rgba(255, 255, 255, 0.55) 0 2px, transparent 3px),
+        radial-gradient(circle at 39% 28%, rgba(255, 255, 255, 0.7) 0 3px, transparent 4px),
+        radial-gradient(circle at 58% 65%, rgba(255, 255, 255, 0.5) 0 2px, transparent 3px),
+        radial-gradient(circle at 77% 26%, rgba(255, 255, 255, 0.7) 0 3px, transparent 4px),
+        radial-gradient(circle at 94% 58%, rgba(255, 255, 255, 0.55) 0 2px, transparent 3px),
         linear-gradient(
             to bottom,
-            #fffdf2 0%,
-            #fff5cd 45%,
-            #f4df9b 100%
+            #fffef5 0%,
+            #fff7d6 55%,
+            #f4dda0 100%
         );
 
-    backdrop-filter: blur(8px);
-
     box-shadow:
-        0 8px 24px rgba(43, 26, 14, 0.22),
-        inset 0 -6px 14px rgba(170, 112, 25, 0.16),
-        inset 0 2px 8px rgba(255, 255, 255, 0.8);
+        0 4px 16px rgba(43, 26, 14, 0.18),
+        inset 0 -2px 0 rgba(212, 168, 67, 0.28);
 
-    transition: all 0.35s ease;
+    border-bottom: 1px solid rgba(212, 168, 67, 0.28);
+    transition: height 0.3s ease, box-shadow 0.3s ease;
     overflow: visible;
     z-index: 1000;
     isolation: isolate;
 }
 
 .header-area.navbar-scrolled {
-    height: 64px;
+    height: 66px;
     box-shadow:
-        0 6px 18px rgba(43, 26, 14, 0.2),
-        inset 0 -5px 12px rgba(170, 112, 25, 0.13);
+        0 3px 12px rgba(43, 26, 14, 0.16),
+        inset 0 -2px 0 rgba(212, 168, 67, 0.22);
 }
 
-/* Micro bolle nella navbar */
+/* Schiuma alta: esce leggermente sopra, senza coprire i link */
 .header-area::before {
     content: "";
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-
-    background:
-        radial-gradient(circle at 5% 25%, rgba(255,255,255,0.9) 0 7px, transparent 8px),
-        radial-gradient(circle at 12% 78%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
-        radial-gradient(circle at 23% 35%, rgba(255,255,255,0.85) 0 5px, transparent 6px),
-        radial-gradient(circle at 36% 70%, rgba(255,255,255,0.7) 0 4px, transparent 5px),
-        radial-gradient(circle at 51% 30%, rgba(255,255,255,0.9) 0 6px, transparent 7px),
-        radial-gradient(circle at 68% 75%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
-        radial-gradient(circle at 83% 32%, rgba(255,255,255,0.85) 0 5px, transparent 6px),
-        radial-gradient(circle at 96% 68%, rgba(255,255,255,0.65) 0 4px, transparent 5px);
-
-    opacity: 0.75;
-}
-
-/* Schiuma sotto la navbar */
-.header-area::after {
-    content: "";
-    position: absolute;
     left: 0;
-    bottom: -38px;
+    top: -12px;
     width: 100%;
-    height: 62px;
+    height: 28px;
     pointer-events: none;
     z-index: 1;
 
     background:
-        radial-gradient(ellipse at 2% 8%, #fffdf2 0 20px, transparent 21px),
-        radial-gradient(ellipse at 6% 12%, #fff4bf 0 32px, transparent 33px),
-        radial-gradient(ellipse at 12% 5%, #fffbea 0 24px, transparent 25px),
-        radial-gradient(ellipse at 18% 15%, #fff2b6 0 34px, transparent 35px),
-        radial-gradient(ellipse at 25% 6%, #fffdf3 0 22px, transparent 23px),
-        radial-gradient(ellipse at 33% 14%, #fff4c4 0 33px, transparent 34px),
-        radial-gradient(ellipse at 41% 6%, #fffbea 0 24px, transparent 25px),
-        radial-gradient(ellipse at 50% 15%, #fff1b3 0 35px, transparent 36px),
-        radial-gradient(ellipse at 59% 7%, #fffdf2 0 23px, transparent 24px),
-        radial-gradient(ellipse at 67% 14%, #fff4c2 0 33px, transparent 34px),
-        radial-gradient(ellipse at 75% 6%, #fffbea 0 24px, transparent 25px),
-        radial-gradient(ellipse at 84% 15%, #fff1b7 0 34px, transparent 35px),
-        radial-gradient(ellipse at 92% 7%, #fffdf2 0 24px, transparent 25px),
-        radial-gradient(ellipse at 98% 13%, #fff3bf 0 32px, transparent 33px);
-
-    filter:
-        drop-shadow(0 5px 4px rgba(43, 26, 14, 0.16))
-        drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.8));
-
-    animation: foamDripFloat 6s ease-in-out infinite;
+        radial-gradient(circle at 3% 22px, #fffef8 0 13px, transparent 14px),
+        radial-gradient(circle at 12% 18px, #fff4ca 0 17px, transparent 18px),
+        radial-gradient(circle at 24% 22px, #fffdf0 0 13px, transparent 14px),
+        radial-gradient(circle at 38% 18px, #fff3c4 0 17px, transparent 18px),
+        radial-gradient(circle at 52% 22px, #fffef8 0 13px, transparent 14px),
+        radial-gradient(circle at 66% 18px, #fff4ca 0 17px, transparent 18px),
+        radial-gradient(circle at 80% 22px, #fffdf0 0 13px, transparent 14px),
+        radial-gradient(circle at 94% 18px, #fff3c4 0 17px, transparent 18px);
 }
 
-@keyframes foamDripFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
+/* Schiuma bassa: visibile, ma non distrugge la struttura della navbar */
+.header-area::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    width: 100%;
+    height: 48px;
+    pointer-events: none;
+    z-index: 1;
 
-    50% {
-        transform: translateY(3px);
-    }
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 252, 240, 0.96) 0%,
+            rgba(255, 244, 201, 0.88) 45%,
+            rgba(255, 238, 182, 0) 100%
+        ),
+        radial-gradient(circle at 5% 12px, #fffef8 0 16px, transparent 17px),
+        radial-gradient(circle at 14% 22px, #fff3c4 0 23px, transparent 24px),
+        radial-gradient(circle at 25% 12px, #fffdf1 0 16px, transparent 17px),
+        radial-gradient(circle at 38% 22px, #fff0b9 0 23px, transparent 24px),
+        radial-gradient(circle at 52% 12px, #fffef8 0 16px, transparent 17px),
+        radial-gradient(circle at 66% 22px, #fff3c4 0 23px, transparent 24px),
+        radial-gradient(circle at 80% 12px, #fffdf1 0 16px, transparent 17px),
+        radial-gradient(circle at 94% 22px, #fff0b9 0 23px, transparent 24px);
+
+    filter: drop-shadow(0 4px 4px rgba(43, 26, 14, 0.13));
 }
 
 .header-area .main-nav {
     position: relative;
     z-index: 3;
 
-    height: 84px;
+    height: 88px;
     width: 100%;
-    max-width: 1400px;
-    margin: auto;
+    max-width: 1500px;
+    margin: 0 auto;
     padding: 0 24px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 18px;
+    flex-wrap: nowrap;
 
     background: transparent;
-    transition: all 0.35s ease;
+    transition: height 0.3s ease;
 }
 
 .header-area.navbar-scrolled .main-nav {
-    height: 64px;
+    height: 66px;
 }
 
+/* Microbolle leggere dentro la navbar */
+.header-area .main-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.25;
+
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.75) 0 2px, transparent 3px) 0 0 / 115px 38px repeat,
+        radial-gradient(circle, rgba(255,255,255,0.45) 0 1.5px, transparent 2.5px) 40px 16px / 90px 34px repeat;
+}
+
+/* Logo + titolo */
 .header-area .main-nav .logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 1px;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    white-space: nowrap;
     text-decoration: none;
-    transition: 0.35s;
-    position: relative;
-    z-index: 4;
+    transition: transform 0.25s ease;
+}
+
+.header-area .main-nav .logo:hover {
+    transform: translateY(-1px);
 }
 
 .logonav {
-    width: 48px;
-    height: 48px;
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
     object-fit: contain;
-    transition: all 0.35s ease;
-}
-
-.header-area.navbar-scrolled .logonav {
-    width: 0;
-    max-width: 0;
-    opacity: 0;
-    margin-right: -18px;
-    visibility: hidden;
+    margin: 0;
+    opacity: 1;
+    visibility: visible;
+    max-width: none;
+    transition: width 0.3s ease, height 0.3s ease;
+    filter: drop-shadow(0 3px 5px rgba(43, 26, 14, 0.25));
 }
 
 .logo-text {
     font-family: "Poppins", sans-serif;
-    color: var(--beer-dark);
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 900;
-    letter-spacing: -1px;
-    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -1.8px;
+    white-space: nowrap;
+    text-transform: none;
+    color: #ffffff;
     text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.9),
-        0 3px 8px rgba(43, 26, 14, 0.12);
+        0 2px 0 rgba(90, 53, 17, 0.75),
+        0 4px 8px rgba(43, 26, 14, 0.25);
+}
+
+.header-area.navbar-scrolled .logonav {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
 }
 
 .header-area.navbar-scrolled .logo-text {
-    font-size: 24px;
+    font-size: 29px;
 }
 
-.header-area .logo:hover {
-    transform: translateY(-2px);
-}
-
-.header-area .logo:hover .logonav {
-    filter: drop-shadow(0 8px 14px rgba(43, 26, 14, 0.22));
-}
-
-/* Parte destra navbar */
+/* Parte destra */
 .nav-container-right {
+    flex: 1 1 auto;
+    min-width: 0;
+
     display: flex;
     align-items: center;
-    gap: 18px;
-    position: relative;
-    z-index: 4;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: nowrap;
 }
 
+/* Menu */
 .header-area .main-nav .nav {
     display: flex;
     align-items: center;
-    list-style: none;
+    justify-content: flex-end;
+    gap: 4px;
+    flex-wrap: nowrap;
+
     margin: 0;
     padding: 0;
+    list-style: none;
+    white-space: nowrap;
 }
 
 .header-area .main-nav .nav li {
-    margin: 0 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 
-/* Font navbar uguale al titolo hero */
 .header-area .main-nav .nav li a {
     position: relative;
+    height: 38px;
 
     display: flex;
     align-items: center;
 
-    height: 42px;
-    padding: 0 5px;
+    padding: 0 9px;
+    border-radius: 7px;
 
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
-    letter-spacing: -0.2px;
+    line-height: 38px;
+    letter-spacing: 0;
 
     color: var(--beer-dark) !important;
-
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85),
-        0 2px 5px rgba(43, 26, 14, 0.08);
-
-    transition: all 0.3s ease;
+    text-shadow: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
 .header-area .main-nav .nav li a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-
-    width: 0;
-    height: 3px;
-
-    background: linear-gradient(
-        to right,
-        var(--beer-gold),
-        var(--beer-amber)
-    );
-
-    border-radius: 50px;
-    transform: translateX(-50%);
-    transition: 0.3s ease;
+    display: none;
 }
 
 .header-area .main-nav .nav li:hover > a,
 .header-area .main-nav .nav li > a.active {
+    background: rgba(212, 168, 67, 0.16);
     color: var(--beer-amber) !important;
-}
-
-.header-area .main-nav .nav li:hover > a::after,
-.header-area .main-nav .nav li > a.active::after {
-    width: 75%;
 }
 
 /* Submenu */
 .header-area .main-nav .nav li.submenu {
-    position: relative;
-    padding-right: 22px;
+    padding-right: 18px;
 }
 
 .header-area .main-nav .nav li.submenu::after {
     font-family: FontAwesome;
     content: "\f107";
-    font-size: 11px;
-    color: var(--beer-dark);
     position: absolute;
-    right: 8px;
-    top: 14px;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: var(--beer-brown);
+    font-size: 11px;
     font-weight: 700;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    line-height: 1;
+    pointer-events: none;
 }
 
 .header-area .main-nav .nav li.submenu ul {
     position: absolute;
-    top: 52px;
+    top: 44px;
     left: 0;
 
-    width: 220px;
+    width: 230px;
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+
+    background: #fffdf6;
+    border: 1px solid rgba(212, 168, 67, 0.25);
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(43, 26, 14, 0.18);
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(14px);
-
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-
-    border-radius: 10px;
-    overflow: hidden;
-
-    background: #fffdf3;
-
-    box-shadow:
-        0 16px 35px rgba(43, 26, 14, 0.22),
-        inset 0 1px 0 rgba(255,255,255,0.8);
-
+    transform: translateY(8px);
     z-index: 1002;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
 }
 
 .header-area.navbar-scrolled .main-nav .nav li.submenu ul {
-    top: 44px;
+    top: 40px;
 }
 
 .header-area .main-nav .nav li.submenu:hover ul {
@@ -363,68 +357,65 @@ p {
 }
 
 .header-area .main-nav .nav li.submenu ul li {
+    display: block;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
 .header-area .main-nav .nav li.submenu ul li a {
     display: block;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 15px;
+    border-radius: 0;
 
-    height: 42px;
-    line-height: 42px;
-    padding: 0 18px;
+    background: transparent;
+    color: #3a2915 !important;
 
-    background: rgba(255, 253, 243, 0.96);
-    color: var(--beer-dark) !important;
-
-    font-family: "Poppins", sans-serif;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
-    letter-spacing: 0;
-
-    border-bottom: 1px solid rgba(212, 168, 67, 0.28);
-
     text-shadow: none;
-    transition: all 0.25s ease;
-}
-
-.header-area .main-nav .nav li.submenu ul li a::after {
-    display: none;
 }
 
 .header-area .main-nav .nav li.submenu ul li a:hover {
-    background: linear-gradient(
-        to right,
-        var(--beer-gold),
-        var(--beer-amber)
-    );
-    color: #fff !important;
-    padding-left: 24px;
+    background: rgba(212, 168, 67, 0.15);
+    color: var(--beer-amber) !important;
 }
 
 /* Search */
 .search-form-nav {
-    min-width: 160px;
+    flex: 0 0 230px;
+    width: 230px;
+    min-width: 230px;
+    max-width: 230px;
+
     display: flex;
     align-items: center;
-    position: relative;
-    z-index: 4;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
 }
 
 .search-form-nav .form-control {
-    height: 36px;
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    width: calc(100% - 46px);
+    height: 38px;
 
-    background: rgba(255, 255, 255, 0.88);
+    border-radius: 8px 0 0 8px;
+    border: 1px solid rgba(212, 168, 67, 0.5);
+    border-right: 0;
+
+    background: rgba(255, 255, 255, 0.94);
     color: var(--beer-dark);
 
-    border: 1px solid rgba(212, 168, 67, 0.75);
-    border-radius: 6px 0 0 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
 
-    padding: 5px 9px;
-    box-shadow: inset 0 1px 4px rgba(43, 26, 14, 0.08);
+    padding: 0 12px;
+    margin: 0;
+    box-shadow: none;
 }
 
 .search-form-nav .form-control::placeholder {
@@ -434,36 +425,72 @@ p {
 .search-form-nav .form-control:focus {
     outline: none;
     border-color: var(--beer-amber);
-    box-shadow:
-        0 0 0 3px rgba(212, 168, 67, 0.18),
-        inset 0 1px 4px rgba(43, 26, 14, 0.08);
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.16);
 }
 
 .search-form-nav .btn-outline-success {
-    height: 36px;
+    width: 46px;
+    min-width: 46px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0 8px 8px 0;
+    border: 1px solid rgba(212, 168, 67, 0.5);
+
+    background: #fff2bf;
     color: var(--beer-amber);
-    border-color: rgba(212, 168, 67, 0.75);
-    background: rgba(255, 250, 225, 0.9);
-    border-radius: 0 6px 6px 0;
+
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 .search-form-nav .btn-outline-success:hover {
-    background-color: var(--beer-gold);
+    background: var(--beer-gold);
     color: #fff;
     border-color: var(--beer-gold);
 }
 
+/* Trigger mobile */
 .header-area .main-nav .menu-trigger {
     cursor: pointer;
     display: none;
     position: absolute;
-    top: 23px;
+    top: 20px;
+    right: 30px;
     width: 32px;
     height: 40px;
     text-indent: -9999em;
     z-index: 99;
-    right: 40px;
 }
+
+@media (max-width: 1200px) {
+    .logo-text {
+        font-size: 30px;
+    }
+
+    .logonav {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+    }
+
+    .search-form-nav {
+        flex-basis: 220px;
+        width: 220px;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+    .header-area .main-nav .nav li a {
+        font-size: 12px;
+        padding: 0 7px;
+    }
+}
+
 /* ========================= */
 /* HERO SECTION - SPILLATURA SUPER MARCATA */
 /* ========================= */
@@ -1024,517 +1051,136 @@ footer .under-footer ul li a:hover {
     90% { height: 25%; }
     100% { height: 25%; }
 }
+/* TEST / FIX LOGO DEFINITIVO */
 
-/* NAVBAR STRUTTURA SCHIUMA */
-.header-area {
-    background:
-        radial-gradient(circle at 8% 35%, rgba(255,255,255,0.95) 0 9px, transparent 10px),
-        radial-gradient(circle at 18% 60%, rgba(255,255,255,0.75) 0 6px, transparent 7px),
-        radial-gradient(circle at 32% 30%, rgba(255,255,255,0.9) 0 8px, transparent 9px),
-        radial-gradient(circle at 47% 65%, rgba(255,255,255,0.65) 0 5px, transparent 6px),
-        radial-gradient(circle at 63% 35%, rgba(255,255,255,0.85) 0 7px, transparent 8px),
-        radial-gradient(circle at 76% 58%, rgba(255,255,255,0.8) 0 6px, transparent 7px),
-        radial-gradient(circle at 91% 38%, rgba(255,255,255,0.9) 0 9px, transparent 10px),
-        linear-gradient(180deg, #fffdf1 0%, var(--foam) 60%, #f2dd9a 100%);
-    
-    position: fixed;
-    overflow: visible;
-    box-shadow:
-        0 6px 18px rgba(43, 26, 14, 0.28),
-        inset 0 -8px 16px rgba(210, 165, 67, 0.18);
+.header-area .main-nav .logo img,
+.header-area .main-nav img.logonav,
+.logo img,
+.logonav {
+    width: 95px !important;
+    height: 95px !important;
+    min-width: 95px !important;
+    max-width: none !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    object-fit: contain !important;
+    transform: none !important;
+
+    display: block !important;
+
+    background: transparent !important;
+
+    filter:
+        drop-shadow(0 5px 8px rgba(43, 26, 14, 0.35)) !important;
 }
-
-.header-area::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 12% 25%, rgba(255,255,255,0.9) 0 3px, transparent 4px),
-        radial-gradient(circle at 24% 70%, rgba(255,255,255,0.7) 0 4px, transparent 5px),
-        radial-gradient(circle at 38% 45%, rgba(255,255,255,0.8) 0 3px, transparent 4px),
-        radial-gradient(circle at 55% 22%, rgba(255,255,255,0.75) 0 4px, transparent 5px),
-        radial-gradient(circle at 71% 68%, rgba(255,255,255,0.85) 0 3px, transparent 4px),
-        radial-gradient(circle at 86% 45%, rgba(255,255,255,0.75) 0 4px, transparent 5px);
-    opacity: 0.9;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.header-area::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -28px;
-    width: 100%;
-    height: 42px;
-    background:
-        radial-gradient(circle at 20px 8px, var(--foam-light) 0 20px, transparent 21px),
-        radial-gradient(circle at 65px 14px, var(--foam) 0 27px, transparent 28px),
-        radial-gradient(circle at 118px 6px, #fff8df 0 18px, transparent 19px),
-        radial-gradient(circle at 165px 18px, var(--foam) 0 30px, transparent 31px),
-        radial-gradient(circle at 220px 9px, var(--foam-light) 0 22px, transparent 23px);
-    background-size: 240px 44px;
-    background-repeat: repeat-x;
-    filter: drop-shadow(0 6px 5px rgba(43, 26, 14, 0.18));
-    pointer-events: none;
-    z-index: -1;
-}
-
-.logo-text {
-    color: var(--beer-dark) !important;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-}
-
-.header-area .main-nav .nav li a {
-    color: var(--beer-dark) !important;
-    font-weight: 800;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-}
-
-.header-area .main-nav .nav li:hover a,
-.header-area .main-nav .nav li a.active {
-    color: var(--beer-amber) !important;
-}
-
-.header-area .main-nav .nav li.submenu:after {
-    color: var(--beer-dark) !important;
-    font-weight: 700;
-}
-
-
-/* NAVBAR COMPATTA */
-.nav-container-right {
-    gap: 16px !important;
-}
-
-.header-area .main-nav .nav li {
-    margin: 0 4px !important;
-}
-
-.header-area .main-nav .nav li a {
-    font-size: 13px !important;
-    padding: 0 4px !important;
-}
-
-.search-form-nav {
-    min-width: 150px !important;
-}
-
-.search-form-nav .form-control {
-    font-size: 12px !important;
-    padding: 4px 8px !important;
-}
-/* ========================= */
-/* OVERRIDE FINALE NAVBAR SUBIRRA */
-/* ========================= */
 
 .header-area {
-    height: 88px !important;
-    background:
-        radial-gradient(circle at 6% 26%, rgba(255,255,255,0.95) 0 6px, transparent 7px),
-        radial-gradient(circle at 13% 66%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
-        radial-gradient(circle at 24% 35%, rgba(255,255,255,0.90) 0 5px, transparent 6px),
-        radial-gradient(circle at 38% 70%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
-        radial-gradient(circle at 51% 28%, rgba(255,255,255,0.95) 0 6px, transparent 7px),
-        radial-gradient(circle at 67% 65%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
-        radial-gradient(circle at 82% 34%, rgba(255,255,255,0.90) 0 5px, transparent 6px),
-        radial-gradient(circle at 94% 68%, rgba(255,255,255,0.70) 0 4px, transparent 5px),
-        linear-gradient(
-            to bottom,
-            #fffef5 0%,
-            #fff7d2 42%,
-            #f5df9e 100%
-        ) !important;
-
-    box-shadow:
-        0 8px 25px rgba(43, 26, 14, 0.25),
-        inset 0 -10px 18px rgba(168, 101, 18, 0.16),
-        inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
-
-    overflow: visible !important;
-    z-index: 9999 !important;
+    height: 105px !important;
 }
 
-/* Contenuto sopra le bolle */
 .header-area .main-nav {
-    height: 88px !important;
-    position: relative !important;
-    z-index: 5 !important;
-    max-width: 1400px !important;
-    padding: 0 32px !important;
-}
-
-/* Titolo Subirra.it nella navbar, stile hero */
-.header-area .main-nav .logo {
-    display: flex !important;
+    height: 105px !important;
     align-items: center !important;
-    gap: 14px !important;
-    position: relative !important;
-    z-index: 10 !important;
 }
 
-.logo-text {
-    font-family: "Poppins", sans-serif !important;
-    font-size: 34px !important;
-    font-weight: 900 !important;
-    letter-spacing: -1.8px !important;
-    text-transform: none !important;
-    color: #ffffff !important;
-
-    -webkit-text-stroke: 1px rgba(43, 26, 14, 0.35);
-
-    text-shadow:
-        0 2px 0 rgba(43, 26, 14, 0.75),
-        0 5px 10px rgba(43, 26, 14, 0.45),
-        0 10px 22px rgba(43, 26, 14, 0.35) !important;
-}
-
-/* Logo immagine */
-.logonav {
-    width: 52px !important;
-    height: 52px !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0 5px 8px rgba(43, 26, 14, 0.25)) !important;
-}
-
-/* Link navbar più leggibili */
-.header-area .main-nav .nav li a {
-    font-family: "Poppins", sans-serif !important;
-    font-size: 14px !important;
-    font-weight: 850 !important;
-    letter-spacing: 0.2px !important;
-    color: #2b1a0e !important;
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85),
-        0 2px 4px rgba(43, 26, 14, 0.08) !important;
-}
-
-.header-area .main-nav .nav li:hover > a,
-.header-area .main-nav .nav li > a.active {
-    color: #a86512 !important;
-}
-
-/* Freccia categorie */
-.header-area .main-nav .nav li.submenu::after {
-    color: #2b1a0e !important;
-    font-weight: 900 !important;
-}
-
-/* Schiuma realistica sotto navbar */
-.header-area::after {
-    content: "" !important;
-    position: absolute !important;
-    left: 0 !important;
-    bottom: -42px !important;
-    width: 100% !important;
-    height: 70px !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-
-    background:
-        radial-gradient(ellipse at 1% 8%, #fffef5 0 22px, transparent 23px),
-        radial-gradient(ellipse at 5% 16%, #fff0b8 0 36px, transparent 37px),
-        radial-gradient(ellipse at 11% 6%, #fffbea 0 26px, transparent 27px),
-        radial-gradient(ellipse at 17% 18%, #fff3c4 0 38px, transparent 39px),
-        radial-gradient(ellipse at 24% 8%, #fffef2 0 24px, transparent 25px),
-        radial-gradient(ellipse at 31% 17%, #fff0b6 0 37px, transparent 38px),
-        radial-gradient(ellipse at 39% 7%, #fffbea 0 26px, transparent 27px),
-        radial-gradient(ellipse at 47% 18%, #fff3c4 0 39px, transparent 40px),
-        radial-gradient(ellipse at 55% 8%, #fffef4 0 25px, transparent 26px),
-        radial-gradient(ellipse at 63% 17%, #fff0b8 0 38px, transparent 39px),
-        radial-gradient(ellipse at 71% 7%, #fffbea 0 26px, transparent 27px),
-        radial-gradient(ellipse at 79% 18%, #fff3c4 0 37px, transparent 38px),
-        radial-gradient(ellipse at 87% 8%, #fffef2 0 25px, transparent 26px),
-        radial-gradient(ellipse at 95% 17%, #fff0b6 0 38px, transparent 39px),
-        radial-gradient(ellipse at 101% 9%, #fffbea 0 28px, transparent 29px) !important;
-
-    filter:
-        drop-shadow(0 6px 5px rgba(43, 26, 14, 0.20))
-        drop-shadow(0 -2px 1px rgba(255, 255, 255, 0.85)) !important;
-}
-
-/* Micro bolle sopra la schiuma */
-.header-area::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
-
-    background:
-        radial-gradient(circle, rgba(255,255,255,0.95) 0 3px, transparent 4px) 20px 12px / 110px 45px repeat,
-        radial-gradient(circle, rgba(255,255,255,0.65) 0 2px, transparent 3px) 55px 28px / 90px 42px repeat,
-        radial-gradient(circle, rgba(255,255,255,0.75) 0 4px, transparent 5px) 80px 8px / 150px 55px repeat !important;
-
-    opacity: 0.8 !important;
-}
-
-/* Search più pulita */
-.search-form-nav .form-control {
-    height: 36px !important;
-    background: rgba(255, 255, 255, 0.92) !important;
-    border: 1px solid rgba(168, 101, 18, 0.45) !important;
-    color: #2b1a0e !important;
-    font-family: "Poppins", sans-serif !important;
-    font-weight: 600 !important;
-    box-shadow: inset 0 1px 4px rgba(43, 26, 14, 0.08) !important;
-}
-
-.search-form-nav .btn-outline-success {
-    height: 36px !important;
-    color: #a86512 !important;
-    border-color: rgba(168, 101, 18, 0.45) !important;
-    background: rgba(255, 246, 210, 0.95) !important;
-}
-
-.search-form-nav .btn-outline-success:hover {
-    background: #d4a843 !important;
-    color: white !important;
-}
-/* ========================= */
-/* SCHIUMA NAVBAR - EFFETTO FOAM CHE FUORIESCE */
-/* ========================= */
-
-.header-area {
-    overflow: visible !important;
-    isolation: isolate !important;
-}
-
-/* La navbar deve stare sopra alla schiuma */
-.header-area .main-nav,
-.header-area .logo,
-.nav-container-right,
-.search-form-nav {
-    position: relative !important;
-    z-index: 10 !important;
-}
-
-/* Schiuma che fuoriesce SOPRA la navbar */
-.header-area::before {
-    content: "" !important;
-    position: absolute !important;
-    left: -2% !important;
-    top: -24px !important;
-    width: 104% !important;
-    height: 52px !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
-
-    background:
-        radial-gradient(circle at 2% 34px, #fffef7 0 22px, transparent 23px),
-        radial-gradient(circle at 8% 28px, #fff7d8 0 26px, transparent 27px),
-        radial-gradient(circle at 15% 36px, #fffdf0 0 20px, transparent 21px),
-        radial-gradient(circle at 22% 30px, #fff4c7 0 27px, transparent 28px),
-        radial-gradient(circle at 30% 38px, #fffef7 0 21px, transparent 22px),
-        radial-gradient(circle at 39% 29px, #fff7d8 0 28px, transparent 29px),
-        radial-gradient(circle at 48% 36px, #fffdf0 0 20px, transparent 21px),
-        radial-gradient(circle at 57% 30px, #fff4c7 0 27px, transparent 28px),
-        radial-gradient(circle at 66% 38px, #fffef7 0 21px, transparent 22px),
-        radial-gradient(circle at 75% 29px, #fff7d8 0 28px, transparent 29px),
-        radial-gradient(circle at 84% 36px, #fffdf0 0 20px, transparent 21px),
-        radial-gradient(circle at 93% 30px, #fff4c7 0 27px, transparent 28px),
-        radial-gradient(circle at 101% 36px, #fffef7 0 23px, transparent 24px);
-
-    filter:
-        drop-shadow(0 3px 3px rgba(43, 26, 14, 0.12))
-        drop-shadow(0 -1px 1px rgba(255, 255, 255, 0.85)) !important;
-
-    opacity: 0.98 !important;
-    animation: foamTopMove 7s ease-in-out infinite !important;
-}
-
-
-/* Schiuma che cola / fuoriesce SOTTO la navbar */
-.header-area::after {
-    content: "" !important;
-    position: absolute !important;
-    left: -2% !important;
-    bottom: -52px !important;
-    width: 104% !important;
-    height: 92px !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-
-    background:
-        /* base cremosa continua */
-        linear-gradient(
-            to bottom,
-            rgba(255, 254, 247, 0.98) 0%,
-            rgba(255, 247, 214, 0.96) 35%,
-            rgba(255, 239, 185, 0.88) 62%,
-            rgba(255, 239, 185, 0) 100%
-        ),
-
-        /* bolle grandi sovrapposte, effetto massa di schiuma */
-        radial-gradient(circle at 1% 18px, #fffef7 0 24px, transparent 25px),
-        radial-gradient(circle at 6% 30px, #fff4c8 0 34px, transparent 35px),
-        radial-gradient(circle at 12% 17px, #fffdf0 0 25px, transparent 26px),
-        radial-gradient(circle at 18% 34px, #fff1bc 0 36px, transparent 37px),
-        radial-gradient(circle at 25% 18px, #fffef7 0 24px, transparent 25px),
-        radial-gradient(circle at 32% 33px, #fff4c8 0 35px, transparent 36px),
-        radial-gradient(circle at 39% 16px, #fffdf0 0 26px, transparent 27px),
-        radial-gradient(circle at 47% 35px, #fff1bc 0 38px, transparent 39px),
-        radial-gradient(circle at 55% 18px, #fffef7 0 25px, transparent 26px),
-        radial-gradient(circle at 63% 33px, #fff4c8 0 35px, transparent 36px),
-        radial-gradient(circle at 71% 16px, #fffdf0 0 26px, transparent 27px),
-        radial-gradient(circle at 79% 35px, #fff1bc 0 37px, transparent 38px),
-        radial-gradient(circle at 87% 18px, #fffef7 0 25px, transparent 26px),
-        radial-gradient(circle at 95% 33px, #fff4c8 0 35px, transparent 36px),
-        radial-gradient(circle at 102% 18px, #fffdf0 0 28px, transparent 29px),
-
-        /* microbolle dentro la schiuma */
-        radial-gradient(circle at 9% 30px, rgba(255,255,255,0.95) 0 3px, transparent 4px),
-        radial-gradient(circle at 21% 19px, rgba(255,255,255,0.8) 0 2px, transparent 3px),
-        radial-gradient(circle at 36% 39px, rgba(255,255,255,0.9) 0 3px, transparent 4px),
-        radial-gradient(circle at 52% 24px, rgba(255,255,255,0.85) 0 2px, transparent 3px),
-        radial-gradient(circle at 68% 42px, rgba(255,255,255,0.9) 0 3px, transparent 4px),
-        radial-gradient(circle at 83% 22px, rgba(255,255,255,0.8) 0 2px, transparent 3px),
-        radial-gradient(circle at 94% 42px, rgba(255,255,255,0.95) 0 3px, transparent 4px) !important;
-
-    filter:
-        drop-shadow(0 7px 6px rgba(43, 26, 14, 0.22))
-        drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.9)) !important;
-
-    opacity: 0.98 !important;
-    animation: foamBottomMove 6s ease-in-out infinite !important;
-}
-
-
-/* Movimento leggero, non effetto cartone */
-@keyframes foamTopMove {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(2px);
-    }
-}
-
-@keyframes foamBottomMove {
-    0%, 100% {
-        transform: translateY(0) scaleX(1);
-    }
-
-    50% {
-        transform: translateY(3px) scaleX(1.008);
-    }
-}
-/* ========================= */
-/* LOGO GRANDE SENZA FAR ANDARE A CAPO LA NAVBAR */
-/* ========================= */
-
-.header-area,
-.header-area .main-nav {
-    height: 92px !important;
-}
-
-/* Impedisce alla navbar di andare a capo */
-.header-area .main-nav {
-    flex-wrap: nowrap !important;
-    overflow: visible !important;
-}
-
-.nav-container-right {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    justify-content: flex-end !important;
-    flex-wrap: nowrap !important;
-    gap: 12px !important;
-}
-
-.header-area .main-nav .nav {
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-}
-
-.header-area .main-nav .nav li a {
-    white-space: nowrap !important;
-}
-
-/* Logo: dimensione reale contenuta, ma ingrandito visivamente */
-.logonav {
-    width: 58px !important;
-    height: 58px !important;
-    min-width: 58px !important;
-
-    transform: scale(1.55) !important;
-    transform-origin: center left !important;
-
-    object-fit: contain !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    max-width: none !important;
-
-    filter:
-        drop-shadow(0 7px 10px rgba(43, 26, 14, 0.35))
-        drop-shadow(0 0 5px rgba(255, 255, 255, 0.85)) !important;
-
-    position: relative !important;
-    z-index: 20 !important;
-}
-
-/* Spazio tra logo ingrandito e scritta */
-.header-area .main-nav .logo {
-    flex: 0 0 auto !important;
-    gap: 30px !important;
-    margin-right: 18px !important;
-    overflow: visible !important;
-    white-space: nowrap !important;
-}
-
-/* Titolo nella navbar: grande ma non enorme, altrimenti mangia spazio */
-.logo-text {
-    font-size: 34px !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-}
-
-/* Search un po' più compatta */
-.search-form-nav {
-    min-width: 130px !important;
-    max-width: 170px !important;
-    flex: 0 1 170px !important;
-}
-
-.search-form-nav .form-control {
-    width: 100% !important;
-    font-size: 12px !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-}
-
-/* Menu leggermente più compatto */
-.header-area .main-nav .nav li {
-    margin: 0 2px !important;
-}
-
-.header-area .main-nav .nav li a {
-    font-size: 12.5px !important;
-    padding: 0 4px !important;
-}
-
-/* Anche quando scrolli, il logo non deve sparire */
-.header-area.navbar-scrolled {
-    height: 76px !important;
-}
-
-.header-area.navbar-scrolled .main-nav {
-    height: 76px !important;
-}
-
+/* evita che allo scroll il logo sparisca o si rimpicciolisca */
+.header-area.navbar-scrolled .main-nav .logo img,
+.header-area.navbar-scrolled .main-nav img.logonav,
 .header-area.navbar-scrolled .logonav {
-    width: 52px !important;
-    height: 52px !important;
-    min-width: 52px !important;
-    transform: scale(1.4) !important;
+    width: 85px !important;
+    height: 85px !important;
+    min-width: 85px !important;
 
+    max-width: none !important;
     opacity: 1 !important;
     visibility: visible !important;
-    max-width: none !important;
     margin-right: 0 !important;
 }
 
+/* logo e titolo più attaccati */
+.header-area .main-nav .logo {
+    gap: 0px !important;
+    align-items: center !important;
+}
+
+/* scritta leggermente più grande */
+.logo-text {
+    font-size: 36px !important;
+    line-height: 1 !important;
+}
+/* ========================= */
+/* LOGO GRANDE SENZA ROMPERE LA NAVBAR */
+/* ========================= */
+
+.header-area {
+    height: 82px !important;
+}
+
+.header-area .main-nav {
+    height: 82px !important;
+    overflow: visible !important;
+}
+
+/* contenitore logo + titolo */
+.header-area .main-nav .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    margin-right: 18px !important;
+}
+
+/* immagine: spazio reale piccolo, dimensione visiva grande */
+.header-area .main-nav .logo .logonav {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    max-width: none !important;
+
+    object-fit: contain !important;
+
+    transform: scale(2.75) !important;
+    transform-origin: center center !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    margin-right: 12px !important;
+
+    position: relative !important;
+    z-index: 20 !important;
+
+    filter:
+        drop-shadow(0 5px 8px rgba(43, 26, 14, 0.35))
+        drop-shadow(0 0 4px rgba(255,255,255,0.75)) !important;
+}
+
+/* titolo vicino al logo */
+.logo-text {
+    font-size: 34px !important;
+    line-height: 1 !important;
+    margin-left: 0 !important;
+    white-space: nowrap !important;
+}
+
+/* non far sparire o ridurre il logo allo scroll */
+.header-area.navbar-scrolled .logonav {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    max-width: none !important;
+
+    transform: scale(1.45) !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-right: 10px !important;
+}
+
 .header-area.navbar-scrolled .logo-text {
-    font-size: 28px !important;
+    font-size: 30px !important;
 }
