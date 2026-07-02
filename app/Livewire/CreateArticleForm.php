@@ -89,8 +89,19 @@ class CreateArticleForm extends Component
             'description' => $this->description,
             'price'       => $this->price,
             'category_id' => $this->category,
-            'user_id'     => Auth::id()
+            'user_id'     => Auth::id(),
         ]);
+
+        $this->temporary_images = [];
+        $this->images = [];
+
+        $this->title = '';
+        $this->description = '';
+        $this->price = '';
+        $this->category = '';
+
+        session()->flash('success', 'Articolo creato con successo!');
+    
 
         // Salva le immagini e le associa all'articolo appena creato
         if (count($this->images) > 0) {

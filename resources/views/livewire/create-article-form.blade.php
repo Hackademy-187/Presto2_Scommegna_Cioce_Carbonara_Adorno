@@ -6,7 +6,7 @@
         </div>
     @endif
 
-    <form wire:submit="store" style="background-color: #3d2514; border-radius: 12px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin: 40px auto; max-width: 700px; border: 1px solid rgba(212, 168, 67, 0.15);">
+    <form wire:submit="store" onsubmit="window.scrollTo({top: 0, behavior: 'smooth'});" style="background-color: #3d2514; border-radius: 12px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin: 40px auto; max-width: 700px; border: 1px solid rgba(212, 168, 67, 0.15);">
         
         <div class="mb-4">
             <label for="title" class="form-label" style="font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #d4a843;">{{ __('ui.title') }}:</label>
@@ -52,7 +52,8 @@
 
         <div class="mb-4">
             <label class="form-label" style="font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #d4a843;">Immagini:</label>
-            <input type="file" wire:model.live="temporary_images" multiple
+            <!-- AGGIUNTO ID="imageInput" PER IL RESET JAVASCRIPT -->
+            <input type="file" id="imageInput" wire:model.live="temporary_images" multiple
                 class="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="Img/"
                 style="border: 1px solid #5a3511; border-radius: 6px; padding: 12px 15px; font-size: 14px; background-color: #2b1a0e; color: #fff3c4;"/>
             @error('temporary_images.*')
@@ -90,10 +91,17 @@
     @script
     <script>
         $wire.on('article-created', () => {
+            // 1. Riporta su la pagina con lo scroll fluido
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+
+            // 2. Svuota fisicamente il campo di testo del selettore file HTML
+            const fileInput = document.getElementById('imageInput');
+            if (fileInput) {
+                fileInput.value = '';
+            }
         });
     </script>
     @endscript
