@@ -17,7 +17,7 @@ return [
     'title' => 'Titolo',
     'create' => 'Crea',
     'welcome' => 'Benvenuto su',
-    'marketplace' => 'Il marketplace italiano per i tuoi annunci',
+    'marketplace' => 'Annunci freschi, birre freschissime',
     'latestAds' => 'Ultimi Annunci',
     'noArticles' => 'Nessun articolo trovato',
     'revisorZone' => 'Zona revisore',

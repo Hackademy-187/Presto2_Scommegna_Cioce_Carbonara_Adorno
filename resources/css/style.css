@@ -1229,14 +1229,16 @@ footer .under-footer ul li a:hover {
 
 /* scritta piccola: "Benvenuto su" */
 .hero-content .section-label {
-    color: #ffd36a !important;
+    color: #ffffff !important;
     opacity: 1 !important;
+    font-size: 15px !important;
     font-weight: 800 !important;
     letter-spacing: 4px !important;
     text-transform: uppercase !important;
     text-shadow:
         0 2px 4px rgba(0, 0, 0, 0.95),
         0 0 14px rgba(0, 0, 0, 0.85) !important;
+
 }
 
 /* titolo grande Subirra.it */
@@ -1253,12 +1255,13 @@ footer .under-footer ul li a:hover {
 
 /* sottotitolo */
 .hero-content .hero-subtitle {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
     color: #ffffff !important;
-    opacity: 1 !important;
-    font-weight: 600 !important;
     text-shadow:
-        0 3px 5px rgba(0, 0, 0, 0.95),
-        0 0 16px rgba(0, 0, 0, 0.8) !important;
+        0 2px 5px rgba(0, 0, 0, 0.85),
+        0 0 14px rgba(0, 0, 0, 0.75) !important;
 }
 /* =========================
    HERO - logo accanto al titolo
