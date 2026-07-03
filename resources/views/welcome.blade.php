@@ -1,17 +1,18 @@
 <x-layout>
 
     @if (session()->has('errorMessage'))
-        <div class="alert alert-danger text-center shadow rounded w-50">
-            {{ session('errorMessage') }}
-        </div>
-    @endif
+    <div class="flash-message alert alert-danger shadow">
+        <i class="fa-solid fa-circle-xmark me-2"></i>
+        {{ session('errorMessage') }}
+    </div>
+@endif
 
-    @if (session()->has('message'))
-        <div class="alert alert-success text-center shadow rounded w-50">
-            {{ session('message') }}
-        </div>
-    @endif
-
+@if (session()->has('message'))
+    <div class="flash-message alert alert-success shadow">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        {{ session('message') }}
+    </div>
+@endif
     <div style="background: linear-gradient(135deg, #f7a204 0%, #130c00d7 100%); min-height: 100vh;">
 
         <div id="beer-hero" class="hero-section">

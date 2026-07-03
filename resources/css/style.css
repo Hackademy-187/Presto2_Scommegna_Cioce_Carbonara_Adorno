@@ -48,6 +48,38 @@ p {
     line-height: 25px;
     color: #fff3c4; /* Testo color schiuma/chiaro per risaltare sul fondo scuro */
 }
+/* FLASH MESSAGE */
+
+.flash-message{
+    position: fixed;
+    top: 105px;
+    right: 25px;
+
+    min-width: 340px;
+    max-width: 450px;
+
+    padding: 16px 20px;
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    z-index: 99999;
+
+    animation: flashIn .35s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+@keyframes flashIn{
+    from{
+        opacity:0;
+        transform:translateX(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
 
 /* HEADER - NAVBAR SUBIRRA PULITA */
 .header-area {
@@ -1334,4 +1366,31 @@ footer .under-footer ul li a:hover {
     display: block;
     width: clamp(120px, 15vw, 190px);
     flex-shrink: 0;
+}
+
+
+/* ===== FIX NAVBAR LOGO ===== */
+.header-area,
+.header-area .main-nav{
+    height:100px !important;
+}
+
+.header-area.navbar-scrolled,
+.header-area.navbar-scrolled .main-nav{
+    height:78px !important;
+}
+
+.header-area .main-nav .logo .logonav{
+    width:105px !important;
+    height:105px !important;
+    min-width:105px !important;
+    object-fit:contain !important;
+    transform:none !important;
+    margin-right:10px !important;
+}
+
+.header-area.navbar-scrolled .main-nav .logo .logonav{
+    width:80px !important;
+    height:80px !important;
+    min-width:80px !important;
 }
