@@ -1,6 +1,6 @@
     <div class="presto-card">
         <div class="card-img" style="height: 200px; overflow: hidden;">
-            <img src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}"
+            <img src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(400, 400) : 'https://picsum.photos/200' }}"
                 class="card-img-top" alt="Immagine dell'articolo {{ $article->title }}">
 
         </div>

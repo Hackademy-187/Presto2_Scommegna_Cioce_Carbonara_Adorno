@@ -25,29 +25,25 @@ class ResizeImage implements ShouldQueue
     }
 
     public function handle(): void
-{
-    $w = $this->w;
-    $h = $this->h;
+    {
+        $w = $this->w;
+        $h = $this->h;
+        $srcPath = storage_path() . '/app/public/' . $this->path . '/' . $this->fileName;
+        $destPath = storage_path() . '/app/public/' . $this->path . "/crop_{$w}x{$h}_"
+            . $this->fileName;
 
-    // Ricomponiamo i percorsi relativi interni alla cartella storage/app/public
-    $relativeSrc = $this->path . '/' . $this->fileName;
-    $relativeDest = $this->path . "/crop_{$w}x{$h}_" . $this->fileName;
 
-    // Otteniamo i percorsi assoluti reali del sistema operativo
-    $srcPath = Storage::disk('public')->path($relativeSrc);
-    $destPath = Storage::disk('public')->path($relativeDest);
+        Image::useImageDriver(ImageDriver::Gd)->load($srcPath)
+            ->crop($w, $h, CropPosition::Center)
+            ->watermark(
+                base_path('resources/img/watermark.png'),
+                paddingX: 5,
+                paddingY: 5,
+                width: 60,
+                height: 60,
+                paddingUnit: Unit::Percent
+            )
 
-    // Eseguiamo il crop con Spatie
-    Image::useImageDriver(ImageDriver::Gd)->load($srcPath)
-        ->crop($w, $h, CropPosition::Center)
-        ->watermark(
-            base_path('resources/img/watermark.png'),
-            paddingX: 5,
-            paddingY: 5,
-            width: 50,
-            height: 50,
-            paddingUnit: Unit::Percent
-        )
-        ->save($destPath);
-}
+            ->save($destPath);
+    }
 }
