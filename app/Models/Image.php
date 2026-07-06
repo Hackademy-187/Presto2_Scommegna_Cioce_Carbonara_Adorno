@@ -20,6 +20,12 @@ class Image extends Model
         $file = "{$path}/crop_{$w}x{$h}_{$filename}";
         return Storage::url($file);
     }
+    protected function casts(): array
+{
+    return [
+        'labels' => 'array',
+    ];
+}
 
     public function getUrl($w = null, $h = null)
     {

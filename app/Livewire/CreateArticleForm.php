@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\File;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Jobs\GoogleVisionSafeSearch;
+use App\Jobs\GoogleVisionLabelImage;
 
 class CreateArticleForm extends Component
 {
@@ -77,13 +79,20 @@ class CreateArticleForm extends Component
 
         // Salva le immagini nel database/storage e avvia il Job di resize
         if (count($this->images) > 0) {
-            foreach ($this->images as $image) {
-                $newFileName = "articles/{$this->article->id}";
-                $newImage = $this->article->images()->create(['path' => $image->store($newFileName, 'public')]);
-                dispatch(new ResizeImage($newImage->path, 500, 500));
-            }
-            File::deleteDirectory(storage_path('/app/livewire-tmp'));
-        }
+    foreach ($this->images as $image) {
+        $newFileName = "articles/{$this->article->id}";
+
+        $newImage = $this->article->images()->create([
+            'path' => $image->store($newFileName, 'public')
+        ]);
+
+        dispatch(new ResizeImage($newImage->path, 300, 300));
+        dispatch(new GoogleVisionSafeSearch($newImage->id));
+                dispatch(new GoogleVisionLabelImage($newImage->id));
+    }
+
+    File::deleteDirectory(storage_path('/app/livewire-tmp'));
+}
 
         session()->flash('success', 'Articolo creato correttamente, in attesa di approvazione da parte del revisore');
         
