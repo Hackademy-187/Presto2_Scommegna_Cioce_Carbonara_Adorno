@@ -38,9 +38,8 @@
                                             <div class="row g-0">
 
                                                 <div class="col-12 col-md-4">
-                                                    <img src="{{ $image->getUrl(500, 500) }}"
-                                                        class="img-fluid w-100 object-fit-cover"
-                                                        style="height: 250px;"
+                                                    <img src="{{ $image->getUrl(800, 600) }}" class="img-fluid w-100"
+                                                        style="height:250px; object-fit:contain;"
                                                         alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
                                                 </div>
 
@@ -73,35 +72,40 @@
 
                                                         <div class="row align-items-center mb-2">
                                                             <div class="col-2">
-                                                                <i class="{{ $image->adult ?? 'text-secondary bi bi-circle-fill' }}"></i>
+                                                                <i
+                                                                    class="{{ $image->adult ?? 'text-secondary bi bi-circle-fill' }}"></i>
                                                             </div>
                                                             <div class="col-10">adult</div>
                                                         </div>
 
                                                         <div class="row align-items-center mb-2">
                                                             <div class="col-2">
-                                                                <i class="{{ $image->violence ?? 'text-secondary bi bi-circle-fill' }}"></i>
+                                                                <i
+                                                                    class="{{ $image->violence ?? 'text-secondary bi bi-circle-fill' }}"></i>
                                                             </div>
                                                             <div class="col-10">violence</div>
                                                         </div>
 
                                                         <div class="row align-items-center mb-2">
                                                             <div class="col-2">
-                                                                <i class="{{ $image->spoof ?? 'text-secondary bi bi-circle-fill' }}"></i>
+                                                                <i
+                                                                    class="{{ $image->spoof ?? 'text-secondary bi bi-circle-fill' }}"></i>
                                                             </div>
                                                             <div class="col-10">spoof</div>
                                                         </div>
 
                                                         <div class="row align-items-center mb-2">
                                                             <div class="col-2">
-                                                                <i class="{{ $image->racy ?? 'text-secondary bi bi-circle-fill' }}"></i>
+                                                                <i
+                                                                    class="{{ $image->racy ?? 'text-secondary bi bi-circle-fill' }}"></i>
                                                             </div>
                                                             <div class="col-10">racy</div>
                                                         </div>
 
                                                         <div class="row align-items-center mb-2">
                                                             <div class="col-2">
-                                                                <i class="{{ $image->medical ?? 'text-secondary bi bi-circle-fill' }}"></i>
+                                                                <i
+                                                                    class="{{ $image->medical ?? 'text-secondary bi bi-circle-fill' }}"></i>
                                                             </div>
                                                             <div class="col-10">medical</div>
                                                         </div>
@@ -130,7 +134,8 @@
                         style="background-color: #3d2514; border-radius: 12px; padding: 30px; border-left: 4px solid #d4a843; box-shadow: 0px 10px 30px rgba(0,0,0,0.4); border-top: 1px solid rgba(212, 168, 67, 0.15); border-right: 1px solid rgba(212, 168, 67, 0.15); border-bottom: 1px solid rgba(212, 168, 67, 0.15);">
 
                         <div>
-                            <h1 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 600;">
+                            <h1
+                                style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 600;">
                                 {{ $article_to_check->title }}
                             </h1>
 

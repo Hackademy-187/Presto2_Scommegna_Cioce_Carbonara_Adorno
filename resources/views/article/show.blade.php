@@ -15,7 +15,8 @@
                 <div class="col-12 text-center">
                     <span class="section-label text-uppercase fw-semibold"
                         style="color: #d4a843; letter-spacing: 2px; font-size: 13px;">{{ __('ui.productDetail') }}</span>
-                    <h1 class="section-title" style="color: #fff; font-family: 'Poppins', sans-serif; font-weight: 700;">
+                    <h1 class="section-title"
+                        style="color: #fff; font-family: 'Poppins', sans-serif; font-weight: 700;">
                         {{ $article->title }}
                     </h1>
                     <div class="mx-auto mt-3" style="width: 60px; height: 3px; background-color: #d4a843;"></div>
@@ -34,17 +35,20 @@
                             <div class="carousel-inner">
                                 @foreach ($article->images as $key => $image)
                                     <div class="carousel-item @if ($loop->first) active @endif">
-                                        <img src="{{ $image->getUrl(500, 500) }}" class="d-block w-100 rounded shadow"
+                                        <img src="{{ $image->getUrl(800, 600) }}" class="d-block w-100 rounded shadow"
+                                            style="height:550px; object-fit:contain;"
                                             alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
                                     </div>
                                 @endforeach
                             </div>
                             @if ($article->images->count() > 1)
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -66,8 +70,9 @@
                         <h2 style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 600;">
                             {{ $article->title }}
                         </h2>
-                        
-                        <h3 class="mt-2" style="color: #d4a843; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">
+
+                        <h3 class="mt-2"
+                            style="color: #d4a843; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">
                             {{ __('ui.author') }}: {{ $article->user?->name ?? __('ui.anonymous') }}
                         </h3>
 
@@ -81,7 +86,7 @@
                         <h4 class="fst-italic mb-3" style="color: #b58421; font-size: 15px;">
                             #{{ $article->category->name }}
                         </h4>
-                        
+
                         <hr style="border-top: 1px solid rgba(255, 243, 196, 0.15); margin: 20px 0;">
 
                         <p style="color: #fff3c4; font-size: 14px; line-height: 1.8; text-align: justify;">
@@ -91,7 +96,8 @@
 
                     <!-- Bottone Torna Indietro fisso in basso -->
                     <div class="mt-4">
-                        <a href="{{ route('article.index') }}" class="btn py-2.5 w-100 fw-bold rounded-pill text-center transition-all"
+                        <a href="{{ route('article.index') }}"
+                            class="btn py-2.5 w-100 fw-bold rounded-pill text-center transition-all"
                             style="background-color: #2b1a0e; color: #fff3c4; border: 1px solid rgba(212, 168, 67, 0.3); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; display: block;">
                             ← {{ __('ui.goBack') }}
                         </a>
