@@ -4,10 +4,8 @@ namespace App\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Image\Enums\ImageDriver;
 use Spatie\Image\Enums\CropPosition;
-use Spatie\Image\Enums\Unit;
 use Spatie\Image\Image;
 
 class ResizeImage implements ShouldQueue
@@ -26,24 +24,45 @@ class ResizeImage implements ShouldQueue
 
     public function handle(): void
     {
-        $w = $this->w;
-        $h = $this->h;
-        $srcPath = storage_path() . '/app/public/' . $this->path . '/' . $this->fileName;
-        $destPath = storage_path() . '/app/public/' . $this->path . "/crop_{$w}x{$h}_"
-            . $this->fileName;
+        // Puliamo i percorsi per evitare doppie barre o cartelle 'public/' duplicate
+        $cleanPath = $this->path === '.' ? '' : $this->path . '/';
 
+        // Percorso assoluto dell'immagine sorgente
+        $srcPath = storage_path('app/public/' . $cleanPath . $this->fileName);
 
-        Image::useImageDriver(ImageDriver::Gd)->load($srcPath)
-            ->crop($w, $h, CropPosition::Center)
+        // Percorso assoluto di destinazione con il prefisso crop_
+        $destPath = storage_path('app/public/' . $cleanPath . "crop_{$this->w}x{$this->h}_" . $this->fileName);
+
+        // Percorso assoluto del watermark
+        $watermarkPath = base_path('resources/img/watermark.png');
+
+        // Controllo di sicurezza: se il file originale non esiste, fermiamo il job prima di rompere Spatie
+        if (!file_exists($srcPath)) {
+            return; 
+        }
+
+        // Se il watermark non esiste, facciamo solo il crop per evitare crash
+        if (!file_exists($watermarkPath)) {
+            /** @var \Spatie\Image\Image $image */
+            $image = Image::useImageDriver(ImageDriver::Gd)->load($srcPath);
+            
+            $image->crop($this->w, $this->h, CropPosition::Center)
+                  ->save($destPath);
+            return;
+        }
+
+        // Esecuzione completa con crop e watermark (con aiuto per l'Intelephense dell'editor)
+        /** @var \Spatie\Image\Image $image */
+        $image = Image::useImageDriver(ImageDriver::Gd)->load($srcPath);
+
+        $image->crop($this->w, $this->h, CropPosition::Center)
             ->watermark(
-                base_path('resources/img/watermark.png'),
-                paddingX: 5,
-                paddingY: 5,
-                width: 60,
-                height: 60,
-                paddingUnit: Unit::Percent
+                $watermarkPath,
+                paddingX: 20,
+                paddingY: 20,
+                width: 110,
+                height: 110
             )
-
             ->save($destPath);
     }
 }
