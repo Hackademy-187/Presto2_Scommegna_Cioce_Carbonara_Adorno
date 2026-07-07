@@ -21,6 +21,64 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     // ======================
+// MOBILE NAVBAR
+// ======================
+
+const menuTrigger = document.querySelector('.menu-trigger');
+const navContainer = document.querySelector('.nav-container-right');
+
+if (menuTrigger && navContainer) {
+    menuTrigger.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        navContainer.classList.toggle('nav-active');
+        menuTrigger.classList.toggle('active');
+    });
+
+    const submenuLinks = navContainer.querySelectorAll('.submenu > a');
+
+    submenuLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (window.innerWidth <= 991) {
+                event.preventDefault();
+
+                const submenu = link.closest('.submenu');
+
+                if (!submenu) return;
+
+                submenu.classList.toggle('submenu-open');
+            }
+        });
+    });
+
+    const navLinks = navContainer.querySelectorAll('a');
+
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 991 && !link.closest('.submenu > a')) {
+                navContainer.classList.remove('nav-active');
+                menuTrigger.classList.remove('active');
+
+                document.querySelectorAll('.submenu.submenu-open').forEach((submenu) => {
+                    submenu.classList.remove('submenu-open');
+                });
+            }
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 991) {
+            navContainer.classList.remove('nav-active');
+            menuTrigger.classList.remove('active');
+
+            document.querySelectorAll('.submenu.submenu-open').forEach((submenu) => {
+                submenu.classList.remove('submenu-open');
+            });
+        }
+    });
+}
+
+    // ======================
     // VIDEO LOGIN
     // ======================
 
