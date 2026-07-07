@@ -67,5 +67,6 @@ return [
 'Bock & Strong Lager' => 'Bock & Strong Lager',
 'Analcoliche & Low Alcohol' => 'Analcoliche & Low Alcohol',
 'Language' => 'Lingua',
+'marketplace' => 'Annunci freschi, birre freschissime',
 
 ];

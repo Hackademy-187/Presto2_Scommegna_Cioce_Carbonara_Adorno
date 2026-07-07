@@ -54,7 +54,7 @@
 
         <div class="row align-items-center xsmall" style="font-size: 0.85rem;">
             <div class="col-md-6 text-center text-md-start text-muted">
-                <p class="mb-0">© {{ date('Y') }} Presto.it — {{ __('ui.allRights') }}</p>
+                <p class="mb-0" style="color:#8c6239 ;">© {{ date('Y') }} Subirra.it — {{ __('ui.allRights') }}</p>
             </div>
             <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
                 <ul class="list-inline mb-0">
